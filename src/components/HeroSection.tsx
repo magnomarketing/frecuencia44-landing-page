@@ -18,10 +18,10 @@ const HeroSection = () => {
         </div>
 
         {/* Main Title */}
-        <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl text-foreground leading-tight mb-6">
-          MASTERCLASS
+        <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl text-foreground leading-tight mb-6 drop-shadow-sm">
+          <span className="text-secondary">MASTERCLASS</span>
           <br />
-          <span className="bg-gradient-primary bg-clip-text text-transparent">
+          <span className="bg-gradient-primary bg-clip-text text-transparent drop-shadow-none">
             FRECUENCIA 44
           </span>
         </h1>
