@@ -5,6 +5,16 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Configuración específica para formularios
+[build.processing]
+  skip_processing = false
+
+# Configuración para formularios
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 # Configuración para formularios
 [[redirects]]
   from = "/*"

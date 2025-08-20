@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Registro - Frecuencia 44</title>
+</head>
+<body>
+    <!-- Formulario estático para que Netlify lo detecte -->
+    <form name="event-registration" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="display: none;">
+        <input type="hidden" name="form-name" value="event-registration" />
+        
+        <!-- Campo honeypot para spam protection -->
+        <p style="display: none;">
+            <label>No llenes este campo si eres humano: <input name="bot-field" /></label>
+        </p>
+        
+        <!-- Campos del formulario -->
+        <p>
+            <label>Nombre Completo: <input type="text" name="fullName" /></label>
+        </p>
+        <p>
+            <label>Email: <input type="email" name="email" /></label>
+        </p>
+        <p>
+            <label>País y Ciudad: <input type="text" name="location" /></label>
+        </p>
+        <p>
+            <label>WhatsApp: <input type="tel" name="whatsapp" /></label>
+        </p>
+        <p>
+            <label>Modalidad de Asistencia:</label>
+            <label><input type="radio" name="attendance" value="virtual" /> Virtual</label>
+            <label><input type="radio" name="attendance" value="presencial" /> Presencial en Tucumán</label>
+        </p>
+        <p>
+            <label><input type="checkbox" name="dataConsent" /> Autorizo el tratamiento de mis datos personales</label>
+        </p>
+        <p>
+            <button type="submit">Enviar</button>
+        </p>
+    </form>
+</body>
+</html>
