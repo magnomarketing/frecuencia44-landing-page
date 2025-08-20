@@ -2,15 +2,13 @@ import { ArrowDown, Calendar, Users, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
-  const baseUrl = import.meta.env.BASE_URL;
-  
   return (
     <section 
       id="inicio" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
         minHeight: '120vh',
-        backgroundImage: `url('${baseUrl}hero-background.webp')`,
+        backgroundImage: 'url(/hero-background.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
