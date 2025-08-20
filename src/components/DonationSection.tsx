@@ -22,9 +22,7 @@ const DonationSection = () => {
   ];
 
   const donationAmounts = [
-    { amount: "$2,500", description: "Contribución Básica" },
-    { amount: "$5,000", description: "Contribución Intermedia" },
-    { amount: "$10,000", description: "Contribución Avanzada" },
+    { amount: "$1", description: "Contribución Básica desde 1 dolar" },
     { amount: "Personalizado", description: "Tu Aporte Único" }
   ];
 
