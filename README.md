@@ -1,105 +1,52 @@
-# Frecuencia 44 - Landing Page v1.0.0
+# 🎯 Frecuencia 44 - Landing Page
 
-Landing page para la Masterclass Frecuencia 44, una experiencia de transformación espiritual y coherencia grupal.
+Landing page para el evento Frecuencia 44 con formulario de registro funcional usando Google Forms y Vercel.
 
-**Versión de Producción**: 1.0.0  
-**Fecha de Lanzamiento**: 27 de Enero, 2025
+## 🚀 Tecnologías
 
-## 🚀 Características
+- **Frontend:** React + TypeScript + Vite
+- **Styling:** Tailwind CSS + shadcn/ui
+- **Deployment:** Vercel
+- **Formulario:** Google Forms + Vercel Functions
+- **Email:** Resend (opcional)
 
-- **Diseño Moderno**: Interfaz elegante y responsiva
-- **Formulario de Registro Funcional**: Sistema completo de registro con validaciones
-- **Navegación Suave**: Scroll automático a secciones
-- **Logo Personalizado**: Diseño integrado con texto "Frecuencia 44"
-- **Optimizado para Vercel**: Configurado para despliegue en Vercel
+## 📋 Características
 
-## 🚀 Despliegue en Vercel
+- ✅ Formulario de registro funcional
+- ✅ Validación en tiempo real
+- ✅ Almacenamiento en Google Forms
+- ✅ Notificaciones por email (opcional)
+- ✅ Diseño responsive
+- ✅ SEO optimizado
+- ✅ Botón scroll-to-top
+- ✅ Widget Ko-fi integrado
 
-### Opción 1: Despliegue Automático (Recomendado)
+## 🔧 Configuración del Formulario
 
-1. **Fork o clona este repositorio**
-2. **Ve a [vercel.com](https://vercel.com)**
-3. **Conecta tu cuenta de GitHub**
-4. **Importa el proyecto**:
-   - Haz clic en "New Project"
-   - Selecciona tu repositorio `frecuencia44-landing-page`
-   - Vercel detectará automáticamente que es un proyecto Vite
-   - Haz clic en "Deploy"
+### Google Forms Setup
 
-### Opción 2: Despliegue Manual
-
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
-
-# Login en Vercel
-vercel login
-
-# Desplegar
-vercel
-
-# Para producción
-vercel --prod
-```
-
-### Configuración Automática
-
-El proyecto incluye:
-- ✅ `vercel.json` - Configuración optimizada
-- ✅ Headers de seguridad
-- ✅ Cache optimizado para assets
-- ✅ SPA routing configurado
-
-## 📋 Formulario de Registro
-
-### Funcionalidades Implementadas
-
-✅ **Validación en Tiempo Real**
-- Nombre completo (mínimo 2 palabras)
-- Email válido
-- País/Ciudad requerido
-- WhatsApp opcional con validación
-- Modalidad de asistencia (opcional)
-- Consentimiento de datos obligatorio
-
-✅ **Envío de Datos**
-- API principal configurable
-- Formspree como fallback
-- Timeout de 10 segundos
-- Manejo de errores robusto
-- Simulación en desarrollo
-
-✅ **Experiencia de Usuario**
-- Indicadores de carga
-- Mensajes de error claros
-- Limpieza automática del formulario
-- Scroll suave después del envío
-- Notificaciones toast
-
-### Configuración de API
-
-El formulario está configurado para funcionar con:
-
-1. **API Principal**: `https://api.frecuencia44.com/register`
-2. **Fallback**: Formspree (`https://formspree.io/f/xayzqkqp`)
-3. **Desarrollo**: Simulación local
+1. **Crear formulario** en [forms.google.com](https://forms.google.com)
+2. **Agregar campos** en este orden:
+   - Nombre Completo (Texto corto)
+   - Email (Email)
+   - País y Ciudad (Texto corto)
+   - WhatsApp (Texto corto)
+   - Modalidad de Asistencia (Múltiple choice)
+   - Consentimiento de Datos (Casilla de verificación)
+3. **Obtener IDs** de los campos (inspeccionar elemento)
+4. **Obtener URL** del formulario (reemplazar `/viewform` por `/formResponse`)
 
 ### Variables de Entorno
 
-```env
-VITE_API_URL=https://tu-api.com
+En Vercel Dashboard → Settings → Environment Variables:
+
+```
+GOOGLE_FORM_URL=https://docs.google.com/forms/d/e/TU_FORM_ID/formResponse
+ADMIN_EMAIL=tu@email.com
+RESEND_API_KEY=re_1234567890abcdef (opcional)
 ```
 
-## 🛠️ Tecnologías
-
-- **React 18** con TypeScript
-- **Vite** para build y desarrollo
-- **Tailwind CSS** para estilos
-- **Shadcn/ui** para componentes
-- **Lucide React** para iconos
-- **React Router** para navegación
-
-## 🚀 Instalación y Desarrollo
+## 🚀 Desarrollo
 
 ```bash
 # Instalar dependencias
@@ -107,40 +54,56 @@ npm install
 
 # Ejecutar en desarrollo
 npm run dev
+
+# Construir para producción
+npm run build
+
+# Preview de producción
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## 📁 Estructura del Proyecto
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/          # Componentes React
+│   ├── ui/             # Componentes de UI (shadcn/ui)
+│   ├── Header.tsx      # Navegación
+│   ├── HeroSection.tsx # Sección principal
+│   ├── AboutSection.tsx
+│   ├── RegistrationSection.tsx # Formulario de registro
+│   └── DonationSection.tsx
+├── pages/              # Páginas
+├── hooks/              # Custom hooks
+├── lib/                # Utilidades
+└── main.tsx           # Punto de entrada
 
-**Use GitHub Codespaces**
+api/
+└── register.js        # Vercel Function para el formulario
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🔗 Enlaces
 
-## What technologies are used for this project?
+- **Sitio web:** [frecuencia44.vercel.app](https://frecuencia44.vercel.app)
+- **Documentación:** [GOOGLE_FORMS_SETUP.md](./GOOGLE_FORMS_SETUP.md)
 
-This project is built with:
+## 📊 Monitoreo
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vercel Analytics:** Métricas de rendimiento
+- **Google Forms:** Registros en tiempo real
+- **Resend:** Notificaciones por email
 
-## How can I deploy this project?
+## 🛠️ Mantenimiento
 
-Simply open [Lovable](https://lovable.dev/projects/2f6b30f4-4181-443b-a947-74d7fd06eb08) and click on Share -> Publish.
+- **Deploy automático** en Vercel
+- **Logs** en Vercel Dashboard
+- **Registros** en Google Forms Dashboard
+- **Backup** automático en Google Sheets
 
-## Can I connect a custom domain to my Lovable project?
+## 📞 Soporte
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Para problemas técnicos:
+1. Revisar logs en Vercel Dashboard
+2. Verificar variables de entorno
+3. Probar formulario de Google Forms directamente
+4. Revisar IDs de campos en `api/register.js`

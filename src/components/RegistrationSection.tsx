@@ -195,16 +195,9 @@ const RegistrationSection = () => {
                 Registro al Evento
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6" name="event-registration" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-                {/* Netlify Forms hidden input */}
-                <input type="hidden" name="form-name" value="event-registration" />
+                             <form onSubmit={handleSubmit} className="space-y-6">
                 
-                {/* Honeypot field for spam protection */}
-                <div style={{ display: 'none' }}>
-                  <label>
-                    No llenes este campo si eres humano: <input name="bot-field" />
-                  </label>
-                </div>
+
                 {/* Nombre Completo */}
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-2">
