@@ -24,9 +24,11 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">F44</span>
-              </div>
+              <img 
+                src="/logotipo.png" 
+                alt="Frecuencia 44" 
+                className="w-10 h-10 object-contain"
+              />
               <span className="font-display font-bold text-xl text-foreground">
                 Frecuencia 44
               </span>
