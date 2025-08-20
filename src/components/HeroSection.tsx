@@ -10,32 +10,12 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
         minHeight: '120vh',
-        backgroundImage: `url('${baseUrl}hero-background.webp') !important`,
-        backgroundSize: 'cover !important',
-        backgroundPosition: 'center !important',
-        backgroundRepeat: 'no-repeat !important',
-        backgroundColor: 'blue !important'
+        backgroundImage: `url('${baseUrl}hero-background.webp')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
-          >
-        {/* Test Background */}
-        <div 
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backgroundColor: 'red !important',
-            zIndex: -1
-          }}
-        ></div>
-        
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('${baseUrl}hero-background.webp')`,
-            backgroundColor: 'blue',
-            zIndex: 1,
-            opacity: 0.3
-          }}
-        ></div>
+    >
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-hero"></div>
