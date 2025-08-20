@@ -1,15 +1,14 @@
 import { useState } from 'react';
-import { Calendar, Clock, Users, Gift, CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
+import { Calendar, Clock, Users, Gift, CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { RegistrationService, RegistrationData } from '@/services/registrationService';
 
 const RegistrationSection = () => {
-  const [formData, setFormData] = useState<RegistrationData>({
+  const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     countryCity: '',
@@ -18,98 +17,34 @@ const RegistrationSection = () => {
     inPersonAttendance: false,
     dataConsent: false
   });
-  
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const validateField = (field: keyof RegistrationData, value: string | boolean) => {
-    const newErrors = { ...errors };
-    
-    switch (field) {
-      case 'fullName':
-        if (!value || (typeof value === 'string' && value.trim().length < 5)) {
-          newErrors.fullName = 'El nombre completo debe tener al menos 5 caracteres';
-        } else if (typeof value === 'string' && value.trim().split(/\s+/).length < 2) {
-          newErrors.fullName = 'Debes ingresar nombre y apellido';
-        } else {
-          delete newErrors.fullName;
-        }
-        break;
-        
-      case 'email':
-        if (!value || (typeof value === 'string' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))) {
-          newErrors.email = 'Ingresa un email válido';
-        } else {
-          delete newErrors.email;
-        }
-        break;
-        
-      case 'countryCity':
-        if (!value || (typeof value === 'string' && value.trim().length < 3)) {
-          newErrors.countryCity = 'Ingresa tu país y ciudad';
-        } else {
-          delete newErrors.countryCity;
-        }
-        break;
-        
-      case 'whatsapp':
-        if (value && typeof value === 'string' && !RegistrationService.validateWhatsApp(value)) {
-          newErrors.whatsapp = 'Ingresa un número de WhatsApp válido';
-        } else {
-          delete newErrors.whatsapp;
-        }
-        break;
-        
-      case 'virtualAttendance':
-      case 'inPersonAttendance':
-        // Removida la validación obligatoria - ahora es opcional
-        delete newErrors.virtualAttendance;
-        delete newErrors.inPersonAttendance;
-        break;
-        
-      case 'dataConsent':
-        if (!value) {
-          newErrors.dataConsent = 'Debes aceptar el consentimiento de datos';
-        } else {
-          delete newErrors.dataConsent;
-        }
-        break;
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleInputChange = (field: keyof RegistrationData, value: string | boolean) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
-    
-    // Validar en tiempo real
-    validateField(field, value);
-  };
-
-  const validateForm = (): boolean => {
-    const validations = [
-      validateField('fullName', formData.fullName),
-      validateField('email', formData.email),
-      validateField('countryCity', formData.countryCity),
-      validateField('whatsapp', formData.whatsapp),
-      validateField('dataConsent', formData.dataConsent)
-    ];
-    
-    return validations.every(valid => valid);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) {
+    // Validar que al menos una modalidad esté seleccionada
+    if (!formData.virtualAttendance && !formData.inPersonAttendance) {
       toast({
-        title: "Error de validación",
-        description: "Por favor, corrige los errores en el formulario.",
+        title: "Error",
+        description: "Debes seleccionar al menos una modalidad de asistencia.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Validar consentimiento de datos
+    if (!formData.dataConsent) {
+      toast({
+        title: "Error",
+        description: "Debes aceptar el consentimiento de datos para continuar.",
         variant: "destructive"
       });
       return;
@@ -117,55 +52,23 @@ const RegistrationSection = () => {
 
     setIsSubmitting(true);
 
-    try {
-      let response;
-      
-      // En desarrollo, usar simulación; en producción, usar el servicio real
-      if (import.meta.env.DEV) {
-        response = await RegistrationService.simulateRegistration(formData);
-      } else {
-        response = await RegistrationService.submitRegistration(formData);
-      }
-      
-      if (response.success) {
-        toast({
-          title: "¡Registro Exitoso!",
-          description: response.message,
-        });
-        
-        // Limpiar formulario
-        setFormData({
-          fullName: '',
-          email: '',
-          countryCity: '',
-          whatsapp: '',
-          virtualAttendance: false,
-          inPersonAttendance: false,
-          dataConsent: false
-        });
-        setErrors({});
-        
-        // Scroll al top del formulario
-        const formElement = document.getElementById('registro');
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        toast({
-          title: "Error en el registro",
-          description: response.message,
-          variant: "destructive"
-        });
-      }
-    } catch (error) {
+    // Simulate form submission
+    setTimeout(() => {
       toast({
-        title: "Error inesperado",
-        description: "Ocurrió un error inesperado. Por favor, intenta nuevamente.",
-        variant: "destructive"
+        title: "¡Registro Exitoso!",
+        description: "Te has registrado correctamente. Recibirás el enlace de acceso por email.",
       });
-    } finally {
+      setFormData({
+        fullName: '',
+        email: '',
+        countryCity: '',
+        whatsapp: '',
+        virtualAttendance: false,
+        inPersonAttendance: false,
+        dataConsent: false
+      });
       setIsSubmitting(false);
-    }
+    }, 1500);
   };
 
   const eventDetails = [
@@ -235,11 +138,9 @@ const RegistrationSection = () => {
                     value={formData.fullName}
                     onChange={(e) => handleInputChange('fullName', e.target.value)}
                     placeholder="Tu nombre completo"
-                    className={`w-full ${errors.fullName ? 'border-red-500' : ''}`}
+                    required
+                    className="w-full"
                   />
-                  {errors.fullName && (
-                    <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
-                  )}
                 </div>
 
                 {/* Correo Electrónico */}
@@ -253,11 +154,9 @@ const RegistrationSection = () => {
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="tu@email.com"
-                    className={`w-full ${errors.email ? 'border-red-500' : ''}`}
+                    required
+                    className="w-full"
                   />
-                  {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                  )}
                   <p className="text-xs text-muted-foreground mt-1">
                     Te enviaremos el enlace de acceso aquí.
                   </p>
@@ -274,11 +173,9 @@ const RegistrationSection = () => {
                     value={formData.countryCity}
                     onChange={(e) => handleInputChange('countryCity', e.target.value)}
                     placeholder="Ej: Argentina, Buenos Aires"
-                    className={`w-full ${errors.countryCity ? 'border-red-500' : ''}`}
+                    required
+                    className="w-full"
                   />
-                  {errors.countryCity && (
-                    <p className="text-red-500 text-sm mt-1">{errors.countryCity}</p>
-                  )}
                   <p className="text-xs text-muted-foreground mt-1">
                     Para mapear la red de participantes.
                   </p>
@@ -295,11 +192,8 @@ const RegistrationSection = () => {
                     value={formData.whatsapp}
                     onChange={(e) => handleInputChange('whatsapp', e.target.value)}
                     placeholder="+54 9 11 1234-5678"
-                    className={`w-full ${errors.whatsapp ? 'border-red-500' : ''}`}
+                    className="w-full"
                   />
-                  {errors.whatsapp && (
-                    <p className="text-red-500 text-sm mt-1">{errors.whatsapp}</p>
-                  )}
                   <p className="text-xs text-muted-foreground mt-1">
                     Para recordatorio y envío rápido del acceso.
                   </p>
@@ -308,7 +202,7 @@ const RegistrationSection = () => {
                 {/* Modalidad de Asistencia */}
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-3">
-                    Modalidad de asistencia para el evento en Tucumán, 27 de septiembre <span className="text-muted-foreground">(opcional)</span>
+                    Modalidad de asistencia para el evento en Tucumán, 27 de septiembre <span className="text-red-500">*</span>
                   </label>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-2">
@@ -332,9 +226,6 @@ const RegistrationSection = () => {
                       </Label>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-2">
-                    Puedes seleccionar una, ambas o ninguna modalidad según tu preferencia.
-                  </p>
                 </div>
 
                 {/* Consentimiento de Datos */}
@@ -350,9 +241,6 @@ const RegistrationSection = () => {
                       <span className="text-red-500">*</span> Autorizo el tratamiento de mis datos para fines de organización y comunicación de este evento.
                     </Label>
                   </div>
-                  {errors.dataConsent && (
-                    <p className="text-red-500 text-sm mt-1">{errors.dataConsent}</p>
-                  )}
                 </div>
 
                 <Button 
@@ -363,10 +251,7 @@ const RegistrationSection = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Registrando...
-                    </>
+                    "Registrando..."
                   ) : (
                     <>
                       Regístrate Gratis

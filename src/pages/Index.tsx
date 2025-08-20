@@ -5,7 +5,6 @@ import MethodologySection from '@/components/MethodologySection';
 import RegistrationSection from '@/components/RegistrationSection';
 import DonationSection from '@/components/DonationSection';
 import BackgroundSection from '@/components/BackgroundSection';
-import LogoWithText from '@/components/LogoWithText';
 
 const Index = () => {
   return (
@@ -24,8 +23,13 @@ const Index = () => {
       <footer className="py-12 bg-background-card border-t border-card-border">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <div className="flex items-center justify-center mb-4">
-              <LogoWithText size="lg" />
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-sm">F44</span>
+              </div>
+              <span className="font-display font-bold text-xl text-foreground">
+                Frecuencia 44
+              </span>
             </div>
             <p className="text-muted-foreground mb-4">
               Transformación colectiva a través de la coherencia grupal

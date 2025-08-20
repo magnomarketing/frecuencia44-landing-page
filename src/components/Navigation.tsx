@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import LogoWithText from '@/components/LogoWithText';
-import { scrollToRegistration } from '@/utils/scroll';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,17 +13,19 @@ const Navigation = () => {
     { name: 'Donativo', href: '#donativo' }
   ];
 
-  const handleRegistrationClick = () => {
-    scrollToRegistration();
-    setIsOpen(false); // Cerrar menú móvil si está abierto
-  };
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-card-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <LogoWithText size="md" />
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-sm">F44</span>
+            </div>
+            <span className="font-display font-bold text-xl text-foreground">
+              Frecuencia 44
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -38,7 +38,7 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <Button variant="primary" size="sm" onClick={handleRegistrationClick}>
+            <Button variant="primary" size="sm">
               Regístrate Ahora
             </Button>
           </div>
@@ -69,7 +69,7 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <Button variant="primary" className="mt-4" onClick={handleRegistrationClick}>
+              <Button variant="primary" className="mt-4">
                 Regístrate Ahora
               </Button>
             </div>
