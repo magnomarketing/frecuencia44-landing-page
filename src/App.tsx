@@ -13,7 +13,17 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+<<<<<<< HEAD
       <BrowserRouter>
+=======
+      <BrowserRouter 
+        basename=""
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true
+        }}
+      >
+>>>>>>> e4593f4 (fix: corregir configuración de Vercel y basename para despliegue)
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

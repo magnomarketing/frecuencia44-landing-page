@@ -1,38 +1,111 @@
-# Welcome to your Lovable project
+# Frecuencia 44 - Landing Page v1.0.0
 
-## Project info
+Landing page para la Masterclass Frecuencia 44, una experiencia de transformación espiritual y coherencia grupal.
 
-**URL**: https://lovable.dev/projects/2f6b30f4-4181-443b-a947-74d7fd06eb08
+**Versión de Producción**: 1.0.0  
+**Fecha de Lanzamiento**: 27 de Enero, 2025
 
-## How can I edit this code?
+## 🚀 Características
 
-There are several ways of editing your application.
+- **Diseño Moderno**: Interfaz elegante y responsiva
+- **Formulario de Registro Funcional**: Sistema completo de registro con validaciones
+- **Navegación Suave**: Scroll automático a secciones
+- **Logo Personalizado**: Diseño integrado con texto "Frecuencia 44"
+- **Optimizado para Vercel**: Configurado para despliegue en Vercel
 
-**Use Lovable**
+## 🚀 Despliegue en Vercel
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2f6b30f4-4181-443b-a947-74d7fd06eb08) and start prompting.
+### Opción 1: Despliegue Automático (Recomendado)
 
-Changes made via Lovable will be committed automatically to this repo.
+1. **Fork o clona este repositorio**
+2. **Ve a [vercel.com](https://vercel.com)**
+3. **Conecta tu cuenta de GitHub**
+4. **Importa el proyecto**:
+   - Haz clic en "New Project"
+   - Selecciona tu repositorio `frecuencia44-landing-page`
+   - Vercel detectará automáticamente que es un proyecto Vite
+   - Haz clic en "Deploy"
 
-**Use your preferred IDE**
+### Opción 2: Despliegue Manual
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Login en Vercel
+vercel login
 
-Follow these steps:
+# Desplegar
+vercel
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Para producción
+vercel --prod
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Configuración Automática
 
-# Step 3: Install the necessary dependencies.
-npm i
+El proyecto incluye:
+- ✅ `vercel.json` - Configuración optimizada
+- ✅ Headers de seguridad
+- ✅ Cache optimizado para assets
+- ✅ SPA routing configurado
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 📋 Formulario de Registro
+
+### Funcionalidades Implementadas
+
+✅ **Validación en Tiempo Real**
+- Nombre completo (mínimo 2 palabras)
+- Email válido
+- País/Ciudad requerido
+- WhatsApp opcional con validación
+- Modalidad de asistencia (opcional)
+- Consentimiento de datos obligatorio
+
+✅ **Envío de Datos**
+- API principal configurable
+- Formspree como fallback
+- Timeout de 10 segundos
+- Manejo de errores robusto
+- Simulación en desarrollo
+
+✅ **Experiencia de Usuario**
+- Indicadores de carga
+- Mensajes de error claros
+- Limpieza automática del formulario
+- Scroll suave después del envío
+- Notificaciones toast
+
+### Configuración de API
+
+El formulario está configurado para funcionar con:
+
+1. **API Principal**: `https://api.frecuencia44.com/register`
+2. **Fallback**: Formspree (`https://formspree.io/f/xayzqkqp`)
+3. **Desarrollo**: Simulación local
+
+### Variables de Entorno
+
+```env
+VITE_API_URL=https://tu-api.com
+```
+
+## 🛠️ Tecnologías
+
+- **React 18** con TypeScript
+- **Vite** para build y desarrollo
+- **Tailwind CSS** para estilos
+- **Shadcn/ui** para componentes
+- **Lucide React** para iconos
+- **React Router** para navegación
+
+## 🚀 Instalación y Desarrollo
+
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
 npm run dev
 ```
 
