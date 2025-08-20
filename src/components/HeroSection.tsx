@@ -41,9 +41,12 @@ const HeroSection = () => {
             FRECUENCIA 44
           </span>
         </h1>
-
+  {/* Alquimia Subtitle */}
+  <p className="text-3xl text-black text-center mb-6 font-bold">
+          ALQUIMIA DE PACTOS Y REALIDADES
+        </p>
         {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-6 leading-relaxed">
           Fortalecimiento del campo áurico, manifestación con Llama Violeta y coherencia grupal 
           para la transformación de Argentina. Una experiencia de unidad, alegría y trascendencia.
         </p>
@@ -66,17 +69,15 @@ const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-          <Button variant="primary" size="lg" className="text-lg px-8">
-            Regístrate Gratis
-          </Button>
+        
           <Button variant="outline" size="lg" className="text-lg px-8">
-            Conoce Más
+        Registrate y recibe la liga de Zoom a tu correo.
           </Button>
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom+12 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center space-y-2 mt-8 text-blue-600">
+          <div className="flex flex-col items-center space-y-2 mt-8 text-blue-400">
             <span className="text-sm font-medium">CONOCE MÁS</span>
             <ArrowDown size={20} className="animate-bounce" />
           </div>
