@@ -33,8 +33,8 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <Button variant="primary" size="sm">
-              Regístrate Ahora
+            <Button variant="primary" size="sm" asChild>
+              <a href="#registro">Regístrate Ahora</a>
             </Button>
           </div>
 
@@ -64,8 +64,8 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <Button variant="primary" className="mt-4">
-                Regístrate Ahora
+              <Button variant="primary" className="mt-4" asChild>
+                <a href="#registro">Regístrate Ahora</a>
               </Button>
             </div>
           </div>

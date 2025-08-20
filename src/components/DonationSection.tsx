@@ -21,12 +21,7 @@ const DonationSection = () => {
     }
   ];
 
-  const donationAmounts = [
-    { amount: "$2,500", description: "Contribución Básica" },
-    { amount: "$5,000", description: "Contribución Intermedia" },
-    { amount: "$10,000", description: "Contribución Avanzada" },
-    { amount: "Personalizado", description: "Tu Aporte Único" }
-  ];
+
 
   return (
     <section id="donativo" className="py-24 bg-background">
@@ -49,7 +44,7 @@ const DonationSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Impact Areas */}
           <div>
             <h3 className="font-display font-bold text-2xl text-foreground mb-8">
@@ -90,29 +85,12 @@ const DonationSection = () => {
           </div>
 
           {/* Donation Options */}
-          <div>
+          <div className="lg:pt-20">
             <Card className="p-8 bg-card border-card-border shadow-elegant">
-              <h3 className="font-display font-bold text-2xl text-foreground mb-6 text-center">
+              <h3 className="font-display font-bold text-2xl text-foreground mb-8  text-center">
                 Realiza tu Donativo
               </h3>
               
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {donationAmounts.map((option, index) => (
-                  <Button
-                    key={index}
-                    variant="outline"
-                    className="h-auto py-4 px-4 flex flex-col items-center space-y-1 hover:bg-primary/10 hover:border-primary transition-all duration-200"
-                  >
-                    <span className="font-bold text-lg text-foreground">
-                      {option.amount}
-                    </span>
-                    <span className="text-sm text-muted-foreground">
-                      {option.description}
-                    </span>
-                  </Button>
-                ))}
-              </div>
-
               {/* Donation Methods */}
               <div className="space-y-4">
                 <Button variant="primary" size="lg" className="w-full">
@@ -121,11 +99,8 @@ const DonationSection = () => {
                 </Button>
                 
                 <Button variant="outline" size="lg" className="w-full">
-                  Transferencia Bancaria
-                </Button>
-                
-                <Button variant="outline" size="lg" className="w-full">
-                  Otros Métodos
+                  <Heart className="mr-2" size={20} />
+                  Donar con PayPal
                 </Button>
               </div>
 

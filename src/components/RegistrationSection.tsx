@@ -1,28 +1,121 @@
 import { useState } from 'react';
-import { Calendar, Clock, Users, Gift, CheckCircle, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, Users, Gift, CheckCircle, ArrowRight, MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 
+interface FormData {
+  fullName: string;
+  email: string;
+  location: string;
+  whatsapp?: string;
+  attendance: 'virtual' | 'presencial';
+  dataConsent: boolean;
+}
+
+interface FormErrors {
+  fullName?: string;
+  email?: string;
+  location?: string;
+  attendance?: string;
+  dataConsent?: string;
+}
+
 const RegistrationSection = () => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [formData, setFormData] = useState<FormData>({
+    fullName: '',
+    email: '',
+    location: '',
+    whatsapp: '',
+    attendance: 'virtual',
+    dataConsent: false
+  });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  const validateField = (name: string, value: any): string | undefined => {
+    switch (name) {
+      case 'fullName':
+        return !value.trim() ? 'El nombre completo es requerido' : undefined;
+      case 'email':
+        if (!value.trim()) return 'El correo electrónico es requerido';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Ingresa un correo electrónico válido';
+        return undefined;
+      case 'location':
+        return !value.trim() ? 'País y ciudad son requeridos' : undefined;
+      case 'attendance':
+        return !value ? 'Selecciona una modalidad de asistencia' : undefined;
+      case 'dataConsent':
+        return !value ? 'Debes aceptar el tratamiento de datos para continuar' : undefined;
+      default:
+        return undefined;
+    }
+  };
+
+  const handleChange = (name: string, value: any) => {
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    if (touched[name]) {
+      const error = validateField(name, value);
+      setErrors(prev => ({ ...prev, [name]: error }));
+    }
+  };
+
+  const handleBlur = (name: string) => {
+    setTouched(prev => ({ ...prev, [name]: true }));
+    const error = validateField(name, formData[name as keyof FormData]);
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
+
+  const isFormValid = () => {
+    return formData.fullName.trim() && 
+           formData.email.trim() && 
+           /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
+           formData.location.trim() && 
+           formData.attendance && 
+           formData.dataConsent;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate all fields
+    const newErrors: FormErrors = {};
+    Object.keys(formData).forEach(key => {
+      const error = validateField(key, formData[key as keyof FormData]);
+      if (error) newErrors[key as keyof FormErrors] = error;
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      setTouched(Object.keys(formData).reduce((acc, key) => ({ ...acc, [key]: true }), {}));
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "¡Registro Exitoso!",
-        description: "Te has registrado correctamente. Recibirás más información por email.",
+        title: "¡Registro exitoso!",
+        description: "Revisa tu correo para el enlace de acceso",
       });
-      setName('');
-      setEmail('');
+      
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        location: '',
+        whatsapp: '',
+        attendance: 'virtual',
+        dataConsent: false
+      });
+      setErrors({});
+      setTouched({});
       setIsSubmitting(false);
     }, 1500);
   };
@@ -31,32 +124,32 @@ const RegistrationSection = () => {
     {
       icon: <Calendar className="text-accent" size={24} />,
       title: "Fecha",
-      value: "24 de Agosto 2025"
+      value: "27 de Septiembre 2025"
     },
     {
       icon: <Clock className="text-accent" size={24} />,
       title: "Horario",
-      value: "19:00 hrs (ARG/CHI)"
+      value: "Por confirmar"
+    },
+    {
+      icon: <MapPin className="text-accent" size={24} />,
+      title: "Ubicación",
+      value: "Tucumán, Argentina"
     },
     {
       icon: <Users className="text-accent" size={24} />,
       title: "Modalidad",
-      value: "Virtual y Gratuita"
-    },
-    {
-      icon: <Gift className="text-accent" size={24} />,
-      title: "Grupo",
-      value: "Diamante (máx. 1,000)"
+      value: "Presencial y Virtual"
     }
   ];
 
   const benefits = [
-    "Fortalecimiento del campo áurico personal",
-    "Técnicas de manifestación con Llama Violeta",
-    "Liberación de contratos limitantes",
-    "Coherencia grupal y unidad colectiva",
-    "Material de apoyo exclusivo",
-    "Acceso a comunidad privada"
+    "Experiencia transformadora única",
+    "Conexión con el Grupo Diamante",
+    "Activación energética colectiva",
+    "Material exclusivo del evento",
+    "Acceso a comunidad privada",
+    "Participación en la transformación de Argentina"
   ];
 
   return (
@@ -65,12 +158,12 @@ const RegistrationSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-display font-bold text-4xl md:text-5xl text-foreground mb-6">
-            Únete al
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Grupo Diamante</span>
+            Registro para el
+            <span className="bg-gradient-primary bg-clip-text text-transparent"> Evento Tucumán</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Regístrate ahora y forma parte de esta experiencia transformadora. 
-            El acceso es completamente gratuito y está limitado a 1,000 participantes.
+            Únete a esta experiencia única que se realizará el 27 de septiembre en Tucumán, 
+            con modalidad presencial y virtual. Forma parte de la transformación colectiva.
           </p>
         </div>
 
@@ -79,38 +172,144 @@ const RegistrationSection = () => {
           <div>
             <Card className="p-8 bg-card border-card-border shadow-elegant">
               <h3 className="font-display font-bold text-2xl text-foreground mb-6">
-                Registro Gratuito
+                Registro al Evento
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Nombre Completo */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Nombre Completo
+                  <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-2">
+                    Nombre Completo *
                   </label>
                   <Input
-                    id="name"
+                    id="fullName"
                     type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Tu nombre completo"
-                    required
-                    className="w-full"
+                    value={formData.fullName}
+                    onChange={(e) => handleChange('fullName', e.target.value)}
+                    onBlur={() => handleBlur('fullName')}
+                    placeholder="Ingresa tu nombre completo"
+                    className={`w-full ${errors.fullName ? 'border-red-500' : ''}`}
                   />
+                  {errors.fullName && (
+                    <p className="text-red-600 text-sm mt-1">{errors.fullName}</p>
+                  )}
                 </div>
 
+                {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email
+                    Correo Electrónico *
                   </label>
                   <Input
                     id="email"
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="tu@email.com"
-                    required
+                    value={formData.email}
+                    onChange={(e) => handleChange('email', e.target.value)}
+                    onBlur={() => handleBlur('email')}
+                    placeholder="ejemplo@correo.com"
+                    className={`w-full ${errors.email ? 'border-red-500' : ''}`}
+                  />
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Te enviaremos el enlace de acceso a esta dirección
+                  </p>
+                  {errors.email && (
+                    <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+                  )}
+                </div>
+
+                {/* País y Ciudad */}
+                <div>
+                  <label htmlFor="location" className="block text-sm font-medium text-foreground mb-2">
+                    País y Ciudad *
+                  </label>
+                  <Input
+                    id="location"
+                    type="text"
+                    value={formData.location}
+                    onChange={(e) => handleChange('location', e.target.value)}
+                    onBlur={() => handleBlur('location')}
+                    placeholder="País, Ciudad"
+                    className={`w-full ${errors.location ? 'border-red-500' : ''}`}
+                  />
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Nos ayuda a mapear la red de participantes
+                  </p>
+                  {errors.location && (
+                    <p className="text-red-600 text-sm mt-1">{errors.location}</p>
+                  )}
+                </div>
+
+                {/* WhatsApp */}
+                <div>
+                  <label htmlFor="whatsapp" className="block text-sm font-medium text-foreground mb-2">
+                    WhatsApp
+                  </label>
+                  <Input
+                    id="whatsapp"
+                    type="tel"
+                    value={formData.whatsapp}
+                    onChange={(e) => handleChange('whatsapp', e.target.value)}
+                    placeholder="+54 9 11 1234-5678"
                     className="w-full"
                   />
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Para recordatorios y envío rápido del enlace de acceso
+                  </p>
+                </div>
+
+                {/* Modalidad de Asistencia */}
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-3">
+                    ¿Cómo planeas asistir al evento del 27 de septiembre? *
+                  </label>
+                  <div className="space-y-3">
+                    <label className="flex items-center space-x-3 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="attendance"
+                        value="virtual"
+                        checked={formData.attendance === 'virtual'}
+                        onChange={(e) => handleChange('attendance', e.target.value)}
+                        onBlur={() => handleBlur('attendance')}
+                        className="text-accent focus:ring-accent"
+                      />
+                      <span className="text-foreground">Virtual</span>
+                    </label>
+                    <label className="flex items-center space-x-3 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="attendance"
+                        value="presencial"
+                        checked={formData.attendance === 'presencial'}
+                        onChange={(e) => handleChange('attendance', e.target.value)}
+                        onBlur={() => handleBlur('attendance')}
+                        className="text-accent focus:ring-accent"
+                      />
+                      <span className="text-foreground">Presencial en Tucumán</span>
+                    </label>
+                  </div>
+                  {errors.attendance && (
+                    <p className="text-red-600 text-sm mt-1">{errors.attendance}</p>
+                  )}
+                </div>
+
+                {/* Consentimiento de Datos */}
+                <div>
+                  <label className="flex items-start space-x-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.dataConsent}
+                      onChange={(e) => handleChange('dataConsent', e.target.checked)}
+                      onBlur={() => handleBlur('dataConsent')}
+                      className="text-accent focus:ring-accent mt-1"
+                    />
+                    <span className="text-sm text-foreground">
+                      Autorizo el tratamiento de mis datos personales para fines de organización y comunicación de este evento *
+                    </span>
+                  </label>
+                  {errors.dataConsent && (
+                    <p className="text-red-600 text-sm mt-1">{errors.dataConsent}</p>
+                  )}
                 </div>
 
                 <Button 
@@ -118,13 +317,13 @@ const RegistrationSection = () => {
                   variant="primary" 
                   size="lg" 
                   className="w-full"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !isFormValid()}
                 >
                   {isSubmitting ? (
-                    "Registrando..."
+                    "Procesando registro..."
                   ) : (
                     <>
-                      Regístrate Gratis
+                      Registrarme al Evento
                       <ArrowRight className="ml-2" size={20} />
                     </>
                   )}
@@ -133,8 +332,8 @@ const RegistrationSection = () => {
 
               <div className="mt-6 pt-6 border-t border-card-border">
                 <p className="text-sm text-muted-foreground text-center">
-                  Al registrarte, aceptas recibir información sobre la Masterclass Frecuencia 44 
-                  y eventos relacionados. Puedes cancelar tu suscripción en cualquier momento.
+                  Los campos marcados con * son obligatorios. 
+                  Tus datos serán tratados con confidencialidad y solo para fines del evento.
                 </p>
               </div>
             </Card>
