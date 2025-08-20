@@ -8,7 +8,7 @@ const Navigation = () => {
   const navItems = [
     { name: 'Inicio', href: '#inicio' },
     { name: 'La Masterclass', href: '#masterclass' },
-    { name: 'Metodología', href: '#metodologia' },
+    { name: 'Contenido', href: '#metodologia' },
     { name: 'Registro', href: '#registro' },
     { name: 'Donativo', href: '#donativo' }
   ];
