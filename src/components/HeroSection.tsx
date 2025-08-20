@@ -8,7 +8,7 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
         minHeight: '120vh',
-        backgroundImage: 'url(/hero-background.webp)',
+        backgroundImage: 'url(/hero-background.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
