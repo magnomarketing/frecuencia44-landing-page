@@ -98,27 +98,46 @@ const RegistrationSection = () => {
 
     setIsSubmitting(true);
 
-    // Netlify Forms maneja el envío automáticamente
-    // Solo necesitamos mostrar el mensaje de éxito
-    setTimeout(() => {
+    try {
+      // Enviar a Vercel Function
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        toast({
+          title: "¡Registro exitoso!",
+          description: "Revisa tu correo para el enlace de acceso",
+        });
+        
+        // Reset form
+        setFormData({
+          fullName: '',
+          email: '',
+          location: '',
+          whatsapp: '',
+          attendance: 'virtual',
+          dataConsent: false
+        });
+        setErrors({});
+        setTouched({});
+      } else {
+        throw new Error('Error en el registro');
+      }
+    } catch (error) {
       toast({
-        title: "¡Registro exitoso!",
-        description: "Revisa tu correo para el enlace de acceso",
+        title: "Error en el registro",
+        description: "Por favor intenta nuevamente o contacta soporte",
+        variant: "destructive",
       });
-      
-      // Reset form
-      setFormData({
-        fullName: '',
-        email: '',
-        location: '',
-        whatsapp: '',
-        attendance: 'virtual',
-        dataConsent: false
-      });
-      setErrors({});
-      setTouched({});
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const eventDetails = [
