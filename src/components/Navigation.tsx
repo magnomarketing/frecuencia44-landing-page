@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-<<<<<<< HEAD
-=======
 import Logo from '@/components/Logo';
 import { scrollToRegistration } from '@/utils/scroll';
->>>>>>> e4593f4 (fix: corregir configuración de Vercel y basename para despliegue)
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,18 +20,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-<<<<<<< HEAD
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">F44</span>
-            </div>
-            <span className="font-display font-bold text-xl text-foreground">
-              Frecuencia 44
-            </span>
-          </div>
-=======
           <Logo size="md" showText={false} />
->>>>>>> e4593f4 (fix: corregir configuración de Vercel y basename para despliegue)
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
