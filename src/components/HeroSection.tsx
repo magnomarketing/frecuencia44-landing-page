@@ -3,29 +3,15 @@ import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   return (
-    <section 
-      id="inicio" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        minHeight: '120vh',
-        backgroundImage: 'url(/hero-background.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-hero"></div>
-      
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Decorative Elements */}
       <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-pulse"></div>
       <div className="absolute bottom-40 left-10 w-24 h-24 bg-secondary/30 rounded-full blur-lg animate-pulse delay-1000"></div>
       
+      {/* Main Content */}
       <div className="container mx-auto px-4 text-center relative z-10">
-        
         {/* Badge */}
-        <div className="inline-flex items-center space-x-2 bg-accent text-white px-4 py-2 rounded-full text-sm font-black mb-8">
+        <div className="inline-flex items-center space-x-2 bg-accent/20 text-accent px-4 py-2 rounded-full text-sm font-medium mb-8">
           <Sparkles size={16} />
           <span>TRANSFORMACIÓN ESPIRITUAL</span>
           <Sparkles size={16} />
@@ -73,8 +59,8 @@ const HeroSection = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom+12 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center space-y-2 mt-8" style={{ color: '#8FE5FF' }}>
+        <div className="absolute bottom-12 md:bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="flex flex-col items-center space-y-2 text-muted-foreground mt-8">
             <span className="text-sm font-medium">CONOCE MÁS</span>
             <ArrowDown size={20} className="animate-bounce" />
           </div>

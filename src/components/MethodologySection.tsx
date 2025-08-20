@@ -59,7 +59,7 @@ const MethodologySection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-display font-bold text-4xl md:text-5xl text-foreground mb-6">
-            Contenido de la
+            Metodología de la
             <span className="bg-gradient-primary bg-clip-text text-transparent"> Masterclass</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
