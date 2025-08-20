@@ -1,63 +1,112 @@
-import heroImage from '@/assets/hero-telecom.jpg';
+import { ArrowDown, Calendar, Users, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center gradient-subtle">
-      {/* Background Image Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
+    <section 
+      id="inicio" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        minHeight: '120vh',
+        backgroundImage: "url('/hero-background.webp') !important",
+        backgroundSize: 'cover !important',
+        backgroundPosition: 'center !important',
+        backgroundRepeat: 'no-repeat !important',
+        backgroundColor: 'blue !important'
+      }}
+          >
+        {/* Test Background */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundColor: 'red !important',
+            zIndex: -1
+          }}
+        ></div>
+        
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/hero-background.webp')",
+            backgroundColor: 'blue',
+            zIndex: 1,
+            opacity: 0.3
+          }}
+        ></div>
       
-      <div className="container mx-auto px-4 lg:px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            <span className="text-gradient">25+ Años</span> Entregando{' '}
-            <br className="hidden sm:block" />
-            Soluciones{' '}
-            <span className="text-gradient">Inteligentes</span>{' '}
-            <br className="hidden sm:block" />
-            de Telecomunicaciones
-          </h1>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-hero"></div>
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-pulse"></div>
+      <div className="absolute bottom-40 left-10 w-24 h-24 bg-secondary/30 rounded-full blur-lg animate-pulse delay-1000"></div>
+      
+      <div className="container mx-auto px-4 text-center relative z-10">
+        
+        {/* Badge */}
+        <div className="inline-flex items-center space-x-2 bg-accent text-white px-4 py-2 rounded-full text-sm font-black mb-8">
+          <Sparkles size={16} />
+          <span>TRANSFORMACIÓN ESPIRITUAL</span>
+          <Sparkles size={16} />
+        </div>
 
-          {/* Subheading */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Tecnología avanzada con IA para optimizar redes de telecomunicaciones
-          </p>
+        {/* Main Title */}
+        <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl text-foreground leading-tight mb-6 drop-shadow-sm">
+          <span className="text-secondary">MASTERCLASS</span>
+          <br />
+          <span className="bg-gradient-primary bg-clip-text text-transparent drop-shadow-none">
+            FRECUENCIA 44
+          </span>
+        </h1>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <a
-              href="#contacto"
-              className="btn-warning px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto"
-            >
-              Contacta un Asesor
-            </a>
-            <a
-              href="#servicios"
-              className="btn-outline px-8 py-4 rounded-lg font-semibold text-lg w-full sm:w-auto"
-            >
-              Ver Servicios
-            </a>
+        {/* Subtitle */}
+        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+          Fortalecimiento del campo áurico, manifestación con Llama Violeta y coherencia grupal 
+          para la transformación de Argentina. Una experiencia de unidad, alegría y trascendencia.
+        </p>
+
+        {/* Key Info */}
+        <div className="flex flex-wrap justify-center items-center gap-8 mb-12 text-foreground">
+          <div className="flex items-center space-x-2">
+            <Calendar className="text-accent" size={20} />
+            <span className="font-medium">24 de Agosto 2025</span>
           </div>
-
-          {/* Key Stats */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">300+</div>
-              <div className="text-muted-foreground">Proveedores en Red</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">25+</div>
-              <div className="text-muted-foreground">Años de Experiencia</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">AI</div>
-              <div className="text-muted-foreground">Tecnología Avanzada</div>
-            </div>
+          <div className="flex items-center space-x-2">
+            <Users className="text-accent" size={20} />
+            <span className="font-medium">Virtual y Gratuito</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <Sparkles className="text-accent" size={20} />
+            <span className="font-medium">Grupo Diamante</span>
           </div>
         </div>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <Button variant="primary" size="lg" className="text-lg px-8">
+            Regístrate Gratis
+          </Button>
+          <Button variant="outline" size="lg" className="text-lg px-8">
+            Conoce Más
+          </Button>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom+12 left-1/2 transform -translate-x-1/2">
+          <div className="flex flex-col items-center space-y-2 mt-8" style={{ color: '#8FE5FF' }}>
+            <span className="text-sm font-medium">CONOCE MÁS</span>
+            <ArrowDown size={20} className="animate-bounce" />
+          </div>
+        </div>
+      </div>
+
+      {/* Artistic Overlays inspired by reference */}
+      <div className="absolute top-1/4 right-10 w-64 h-64 opacity-20">
+        <div className="w-full h-full bg-gradient-primary rounded-3xl rotate-12 transform"></div>
+      </div>
+      <div className="absolute bottom-1/4 left-10 w-48 h-48 opacity-15">
+        <div className="w-full h-full bg-gradient-accent rounded-2xl -rotate-6 transform"></div>
       </div>
     </section>
   );
