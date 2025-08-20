@@ -88,26 +88,26 @@ Para recibir emails cuando alguien se registre:
 ```
 Título: Registro Evento Frecuencia 44
 
-Campo 1: Nombre Completo (entry.1234567890)
-Campo 2: Email (entry.0987654321)
-Campo 3: País y Ciudad (entry.1111111111)
-Campo 4: WhatsApp (entry.2222222222)
-Campo 5: Modalidad (entry.3333333333)
+Campo 1: Nombre Completo (entry.2113807473)
+Campo 2: Email (entry.1807164578)
+Campo 3: País y Ciudad (entry.316240725)
+Campo 4: WhatsApp (entry.588822403)
+Campo 5: Modalidad (entry.1776417857)
   - Virtual
   - Presencial en Tucumán
-Campo 6: Consentimiento (entry.4444444444)
+Campo 6: Consentimiento (entry.1174231297)
 ```
 
 ### **URL del Formulario:**
 ```
-https://docs.google.com/forms/d/e/1FAIpQLSf1234567890abcdef/formResponse
+https://docs.google.com/forms/u/0/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse
 ```
 
 ### **Variables de Entorno:**
 ```
-GOOGLE_FORM_URL=https://docs.google.com/forms/d/e/1FAIpQLSf1234567890abcdef/formResponse
+GOOGLE_FORM_URL=https://docs.google.com/forms/u/0/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse
 ADMIN_EMAIL=tu@email.com
-RESEND_API_KEY=re_1234567890abcdef
+RESEND_API_KEY=re_1234567890abcdef (opcional)
 ```
 
 ---

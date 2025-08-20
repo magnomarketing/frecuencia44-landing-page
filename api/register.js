@@ -33,17 +33,16 @@ export default async function handler(req, res) {
     async function saveToGoogleForms(data) {
       const formData = new FormData();
       
-      // IMPORTANTE: Reemplaza estos IDs con los reales de tu Google Form
-      // Para obtener los IDs: Inspecciona el formulario y busca "entry."
-      formData.append('entry.1234567890', data.fullName);        // Nombre Completo
-      formData.append('entry.0987654321', data.email);           // Email
-      formData.append('entry.1111111111', data.location);        // País y Ciudad
-      formData.append('entry.2222222222', data.whatsapp || '');  // WhatsApp
-      formData.append('entry.3333333333', data.attendance);      // Modalidad
-      formData.append('entry.4444444444', data.dataConsent ? 'Sí' : 'No'); // Consentimiento
+      // IDs reales del formulario de Google Forms
+      formData.append('entry.2113807473', data.fullName);        // Nombre Completo
+      formData.append('entry.1807164578', data.email);           // Email
+      formData.append('entry.316240725', data.location);         // País y Ciudad
+      formData.append('entry.588822403', data.whatsapp || '');   // WhatsApp
+      formData.append('entry.1776417857', data.attendance);      // Modalidad
+      formData.append('entry.1174231297', data.dataConsent ? 'Sí' : 'No'); // Consentimiento
       
-      // URL del formulario (reemplaza con tu URL real)
-      const formUrl = process.env.GOOGLE_FORM_URL || 'https://docs.google.com/forms/d/e/TU_FORM_ID/formResponse';
+      // URL real del formulario
+      const formUrl = process.env.GOOGLE_FORM_URL || 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse';
       
       try {
         const response = await fetch(formUrl, {
