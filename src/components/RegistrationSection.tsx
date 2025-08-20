@@ -98,7 +98,8 @@ const RegistrationSection = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Netlify Forms maneja el envío automáticamente
+    // Solo necesitamos mostrar el mensaje de éxito
     setTimeout(() => {
       toast({
         title: "¡Registro exitoso!",
@@ -117,7 +118,7 @@ const RegistrationSection = () => {
       setErrors({});
       setTouched({});
       setIsSubmitting(false);
-    }, 1500);
+    }, 1000);
   };
 
   const eventDetails = [
@@ -175,7 +176,9 @@ const RegistrationSection = () => {
                 Registro al Evento
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" name="event-registration" method="POST" data-netlify="true">
+                {/* Netlify Forms hidden input */}
+                <input type="hidden" name="form-name" value="event-registration" />
                 {/* Nombre Completo */}
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium text-foreground mb-2">
@@ -183,6 +186,7 @@ const RegistrationSection = () => {
                   </label>
                   <Input
                     id="fullName"
+                    name="fullName"
                     type="text"
                     value={formData.fullName}
                     onChange={(e) => handleChange('fullName', e.target.value)}
@@ -202,6 +206,7 @@ const RegistrationSection = () => {
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => handleChange('email', e.target.value)}
@@ -224,6 +229,7 @@ const RegistrationSection = () => {
                   </label>
                   <Input
                     id="location"
+                    name="location"
                     type="text"
                     value={formData.location}
                     onChange={(e) => handleChange('location', e.target.value)}
@@ -246,6 +252,7 @@ const RegistrationSection = () => {
                   </label>
                   <Input
                     id="whatsapp"
+                    name="whatsapp"
                     type="tel"
                     value={formData.whatsapp}
                     onChange={(e) => handleChange('whatsapp', e.target.value)}
@@ -298,6 +305,7 @@ const RegistrationSection = () => {
                   <label className="flex items-start space-x-3 cursor-pointer">
                     <input
                       type="checkbox"
+                      name="dataConsent"
                       checked={formData.dataConsent}
                       onChange={(e) => handleChange('dataConsent', e.target.checked)}
                       onBlur={() => handleBlur('dataConsent')}
