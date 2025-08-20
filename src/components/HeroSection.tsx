@@ -2,13 +2,15 @@ import { ArrowDown, Calendar, Users, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
+  const baseUrl = import.meta.env.BASE_URL;
+  
   return (
     <section 
       id="inicio" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
         minHeight: '120vh',
-        backgroundImage: "url('/hero-background.webp') !important",
+        backgroundImage: `url('${baseUrl}hero-background.webp') !important`,
         backgroundSize: 'cover !important',
         backgroundPosition: 'center !important',
         backgroundRepeat: 'no-repeat !important',
@@ -28,7 +30,7 @@ const HeroSection = () => {
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/hero-background.webp')",
+            backgroundImage: `url('${baseUrl}hero-background.webp')`,
             backgroundColor: 'blue',
             zIndex: 1,
             opacity: 0.3
