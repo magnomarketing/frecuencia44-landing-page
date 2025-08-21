@@ -14,7 +14,7 @@ const queryClient = new QueryClient();
 const paypalOptions = {
   clientId: process.env.NODE_ENV === 'production' 
     ? 'ATGFv2fAp2mEKDjQktr-tAzKx-r7N8jOkmaCCvqFXYVI589Z4lu4Nx005khcivb51bCn8UBFVxJN9W1W' // Client ID de producción
-    : 'AZ5sLcMXbp1xOS54Hwk_suEgYxX6bqox6IsepXt8XOG9yqvRhofv89i_4mexkxUiYgT0TLxxfQZrHyGb, // Client ID de sandbox para desarrollo
+    : 'AZ5sLcMXbp1xOS54Hwk_suEgYxX6bqox6IsepXt8XOG9yqvRhofv89i_4mexkxUiYgT0TLxxfQZrHyGb', // Client ID de sandbox para desarrollo
   currency: 'USD',
   intent: 'capture',
   components: 'buttons',
