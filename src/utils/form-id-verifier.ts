@@ -5,8 +5,7 @@ export const currentFormIds = {
   fullName: 'entry.2113807473',
   email: 'entry.1807164578',
   location: 'entry.316240725',
-  whatsapp: 'entry.588822403',
-  dataConsent: 'entry.1174231297'
+  whatsapp: 'entry.588822403'
 };
 
 // Función para verificar IDs en la consola
@@ -19,7 +18,7 @@ export const verifyFormIds = () => {
   console.log('- País y Ciudad:', currentFormIds.location);
   console.log('- WhatsApp:', currentFormIds.whatsapp);
 
-  console.log('- Consentimiento:', currentFormIds.dataConsent);
+
   console.log('');
   console.log('URL del formulario:');
   console.log('https://docs.google.com/forms/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse');
@@ -50,7 +49,7 @@ export const testFormSubmission = (data: any, customIds?: any) => {
     [ids.location]: data.location,
     [ids.whatsapp]: data.whatsapp || '',
 
-    [ids.dataConsent]: data.dataConsent ? 'Sí' : 'No'
+
   });
   
   const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse';
@@ -82,7 +81,7 @@ export const generateUpdateInstructions = (correctIds: any) => {
   console.log(`  '${correctIds.location}': data.location,`);
   console.log(`  '${correctIds.whatsapp}': data.whatsapp || '',`);
 
-  console.log(`  '${correctIds.dataConsent}': data.dataConsent ? 'Sí' : 'No'`);
+
   console.log('});');
   console.log('');
   console.log('También actualiza:');
@@ -95,7 +94,7 @@ export const generateUpdateInstructions = (correctIds: any) => {
   console.log(`  location: '${correctIds.location}',`);
   console.log(`  whatsapp: '${correctIds.whatsapp}',`);
 
-  console.log(`  dataConsent: '${correctIds.dataConsent}'`);
+
   console.log('};');
 };
 
@@ -108,8 +107,7 @@ export const createTestForm = () => {
     fullName: 'Juan Pérez',
     email: 'juan@test.com',
     location: 'Argentina, Buenos Aires',
-    whatsapp: '+54 9 11 1234-5678',
-    dataConsent: true
+    whatsapp: '+54 9 11 1234-5678'
   };
   console.log(testData);
   console.log('');
@@ -128,8 +126,7 @@ export const testWithCustomIds = (customIds: any) => {
     fullName: 'Juan Pérez',
     email: 'juan@test.com',
     location: 'Argentina, Buenos Aires',
-    whatsapp: '+54 9 11 1234-5678',
-    dataConsent: true
+    whatsapp: '+54 9 11 1234-5678'
   };
   
   return testFormSubmission(testData, customIds);
@@ -161,7 +158,6 @@ export const showQuickInstructions = () => {
   console.log('2. Email (Email)');
   console.log('3. País y Ciudad (Texto corto)');
   console.log('4. WhatsApp (Texto corto)');
-  console.log('5. Consentimiento de Datos (Checkbox)');
   console.log('');
   console.log('📝 PASOS PARA OBTENER IDs:');
   console.log('1. Ve al formulario de arriba');
@@ -176,7 +172,7 @@ export const showQuickInstructions = () => {
   console.log('  email: "entry.TU_ID_REAL",           // Email');
   console.log('  location: "entry.TU_ID_REAL",        // País y Ciudad');
   console.log('  whatsapp: "entry.TU_ID_REAL",        // WhatsApp');
-  console.log('  dataConsent: "entry.TU_ID_REAL"      // Consentimiento');
+
   console.log('});');
   console.log('');
   console.log('🧪 COMANDO PARA PROBAR:');
@@ -195,24 +191,21 @@ export const autoTestCommonIds = () => {
       fullName: 'entry.1234567890',
       email: 'entry.1234567891', 
       location: 'entry.1234567892',
-      whatsapp: 'entry.1234567893',
-      dataConsent: 'entry.1234567894'
+      whatsapp: 'entry.1234567893'
     },
     // Patrón 2: IDs con números similares
     {
       fullName: 'entry.2113807473',
       email: 'entry.1807164578',
       location: 'entry.316240725', 
-      whatsapp: 'entry.588822403',
-      dataConsent: 'entry.1776417857'
+      whatsapp: 'entry.588822403'
     },
     // Patrón 3: IDs con números diferentes
     {
       fullName: 'entry.9876543210',
       email: 'entry.8765432109',
       location: 'entry.7654321098',
-      whatsapp: 'entry.6543210987', 
-      dataConsent: 'entry.5432109876'
+      whatsapp: 'entry.6543210987'
     }
   ];
   
@@ -220,8 +213,7 @@ export const autoTestCommonIds = () => {
     fullName: 'Juan Pérez',
     email: 'juan@test.com',
     location: 'Argentina, Buenos Aires',
-    whatsapp: '+54 9 11 1234-5678',
-    dataConsent: true
+    whatsapp: '+54 9 11 1234-5678'
   };
   
   console.log('Probando diferentes patrones de IDs...');
@@ -257,8 +249,7 @@ export const generateTestUrls = () => {
     fullName: 'Juan Pérez',
     email: 'juan@test.com', 
     location: 'Argentina, Buenos Aires',
-    whatsapp: '+54 9 11 1234-5678',
-    dataConsent: true
+    whatsapp: '+54 9 11 1234-5678'
   };
   
   // Probar con IDs actuales
@@ -273,8 +264,7 @@ export const generateTestUrls = () => {
     fullName: 'entry.1234567890',
     email: 'entry.1234567891',
     location: 'entry.1234567892', 
-    whatsapp: 'entry.1234567893',
-    dataConsent: 'entry.1234567894'
+    whatsapp: 'entry.1234567893'
   };
   const sequentialUrl = testFormSubmission(testData, sequentialIds);
   console.log(sequentialUrl);

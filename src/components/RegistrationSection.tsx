@@ -141,13 +141,7 @@ const RegistrationSection = () => {
 
 
 
-                  {/* Consentimiento de Datos */}
-                  <FormCheckbox
-                    name="dataConsent"
-                    label="Consentimiento de Datos"
-                    checkboxLabel="Autorizo el tratamiento de mis datos personales para fines de organización y comunicación de este evento"
-                    required
-                  />
+
 
                   {/* Submit Button */}
                   <Button
@@ -170,8 +164,8 @@ const RegistrationSection = () => {
 
               <div className="mt-6 pt-6 border-t border-card-border">
                 <p className="text-sm text-muted-foreground text-center">
-                  Los campos marcados con * son obligatorios.
-                  Tus datos serán tratados con confidencialidad y solo para fines del evento.
+                  Los campos marcados con * son obligatorios.<br />
+                  Al enviar el formulario estás aceptando el tratamiento de mis datos personales para fines de organización y comunicación de este evento*
                 </p>
               </div>
             </Card>

@@ -28,11 +28,7 @@ export const registrationSchema = z.object({
   
 
   
-  dataConsent: z
-    .boolean()
-    .refine((val) => val === true, {
-      message: "Debes aceptar el tratamiento de datos para continuar"
-    })
+
 })
 
 // Tipo TypeScript derivado del esquema

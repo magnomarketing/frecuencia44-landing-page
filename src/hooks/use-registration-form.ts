@@ -15,7 +15,7 @@ export const useRegistrationForm = () => {
       location: '',
       whatsapp: '',
 
-      dataConsent: false
+
     },
     mode: 'onBlur', // Validar al perder el foco
     reValidateMode: 'onChange' // Re-validar al cambiar
@@ -48,7 +48,7 @@ export const useRegistrationForm = () => {
         [currentFormIds.location]: data.location,
         [currentFormIds.whatsapp]: data.whatsapp || '',
 
-        [currentFormIds.dataConsent]: data.dataConsent ? 'Sí' : 'No'
+
       });
 
       // URL del formulario (confirmada por el usuario)
