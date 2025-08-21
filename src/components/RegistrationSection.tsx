@@ -99,8 +99,8 @@ const RegistrationSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Enviar a Vercel Function (versión simplificada)
-      const response = await fetch('/api/register-simple', {
+      // Enviar a Vercel Function (versión de prueba)
+      const response = await fetch('/api/register-test', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,6 +110,8 @@ const RegistrationSection = () => {
 
       if (response.ok) {
         const result = await response.json();
+        console.log('Respuesta exitosa:', result);
+        
         toast({
           title: "¡Registro exitoso!",
           description: "Revisa tu correo para el enlace de acceso",
@@ -127,12 +129,15 @@ const RegistrationSection = () => {
         setErrors({});
         setTouched({});
       } else {
-        throw new Error('Error en el registro');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('Error en respuesta:', response.status, errorData);
+        throw new Error(`Error ${response.status}: ${errorData.message || 'Error desconocido'}`);
       }
     } catch (error) {
+      console.error('Error completo:', error);
       toast({
         title: "Error en el registro",
-        description: "Por favor intenta nuevamente o contacta soporte",
+        description: error.message || "Por favor intenta nuevamente o contacta soporte",
         variant: "destructive",
       });
     } finally {
