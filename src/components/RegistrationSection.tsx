@@ -99,13 +99,21 @@ const RegistrationSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Enviar a Vercel Function
-      const response = await fetch('/api/register', {
+      // Enviar a Formspree (solución alternativa)
+      const response = await fetch('https://formspree.io/f/xayzqkqp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          location: formData.location,
+          whatsapp: formData.whatsapp,
+          attendance: formData.attendance,
+          dataConsent: formData.dataConsent,
+          subject: 'Nuevo registro - Frecuencia 44'
+        }),
       });
 
       if (response.ok) {
