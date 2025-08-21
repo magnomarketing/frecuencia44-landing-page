@@ -65,7 +65,7 @@ Para recibir notificaciones de pagos:
 
 1. En **PayPal Developer Dashboard**
 2. Ve a **"Webhooks"**
-3. **Agrega endpoint:** `https://tu-dominio.com/api/paypal-webhook`
+3. **Agrega endpoint:** `https://frecuencia44.festivalargentinalibre.com/api/paypal-webhook`
 4. **Selecciona eventos:**
    - `PAYMENT.CAPTURE.COMPLETED`
    - `PAYMENT.CAPTURE.DENIED`
