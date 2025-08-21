@@ -62,6 +62,27 @@ const AboutSection = () => {
           ))}
         </div>
 
+        {/* Video Section */}
+        <div className="text-center mb-16">
+          <h3 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-8">
+            Conoce Más Sobre
+            <span className="bg-gradient-primary bg-clip-text text-transparent"> Frecuencia 44</span>
+          </h3>
+          <div className="max-w-4xl mx-auto">
+            <Card className="p-4 bg-card border-card-border shadow-elegant">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/0tBR2wflaHk"
+                  title="Frecuencia 44 - Transformación Colectiva"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </Card>
+          </div>
+        </div>
 
       </div>
     </section>
