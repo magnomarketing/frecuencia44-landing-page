@@ -135,52 +135,27 @@ const PayPalDonationButton = ({ className = '' }: PayPalDonationButtonProps) => 
         )}
       </div>
 
-      {/* PayPal Buttons */}
-      <div className="space-y-3">
+      {/* Payment Buttons */}
+      <div className="space-y-4">
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
             Donación de ${getFinalAmount()} USD
           </p>
         </div>
         
-        {/* PayPal Button */}
-        <div className="space-y-2">
-          <p className="text-xs text-muted-foreground text-center">
-            Pagar con PayPal
-          </p>
-          <PayPalButtons
-            createOrder={createOrder}
-            onApprove={onApprove}
-            onError={onError}
-            style={{
-              layout: 'vertical',
-              color: 'blue',
-              shape: 'rect',
-              label: 'pay'
-            }}
-            forceReRender={[selectedAmount, customAmount]}
-          />
-        </div>
-
-        {/* Debit or Credit Card Button */}
-        <div className="space-y-2">
-          <p className="text-xs text-muted-foreground text-center">
-            Pagar con Tarjeta de Débito o Crédito
-          </p>
-          <PayPalButtons
-            createOrder={createOrder}
-            onApprove={onApprove}
-            onError={onError}
-            style={{
-              layout: 'vertical',
-              color: 'black',
-              shape: 'rect',
-              label: 'pay'
-            }}
-            fundingSource="card"
-            forceReRender={[selectedAmount, customAmount]}
-          />
-        </div>
+        {/* Single PayPal Button with Multiple Funding Sources */}
+        <PayPalButtons
+          createOrder={createOrder}
+          onApprove={onApprove}
+          onError={onError}
+          style={{
+            layout: 'vertical',
+            color: 'blue',
+            shape: 'rect',
+            label: 'pay'
+          }}
+          forceReRender={[selectedAmount, customAmount]}
+        />
       </div>
 
       {/* Info */}
