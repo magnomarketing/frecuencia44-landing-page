@@ -63,8 +63,10 @@ export const useRegistrationForm = () => {
 
       // Como usamos no-cors, siempre retorna status 0, pero funciona
       toast({
-        title: "¡Registro exitoso! 🎉",
-        description: "Revisa tu correo para el enlace de acceso",
+        title: "🎉 ¡Registro Exitoso!",
+        description: "Confirmamos tu registro. Estarás recibiendo en los próximos días el enlace de la masterclass en tu correo electrónico.",
+        variant: "success",
+        duration: 6000,
       })
 
       // Reset form
