@@ -13,8 +13,8 @@ const queryClient = new QueryClient();
 // Configuración de PayPal
 const paypalOptions = {
   clientId: process.env.NODE_ENV === 'production' 
-    ? 'ATGFv2fAp2mEKDjQktr-tAzKx-r7N8jOkmaCCvqFXYVI589Z4lu4Nx005khcivb51bCn8UBFVxJN9W1W' // Client ID de producción
-    : 'AZ5sLcMXbp1xOS54Hwk_suEgYxX6bqox6IsepXt8XOG9yqvRhofv89i_4mexkxUiYgT0TLxxfQZrHyGb', // Client ID de sandbox para desarrollo
+    ? 'AWI8959Buf8HLIorpyfPsu8v64GnMZZi4w4PXxi9jB7QDAU-HDQL0R3PvGcWHqGHa4NDdqVlROuLhvEo' // Client ID de producción
+    : 'AfeO5GtQ-NCRVzUHF8DoyuEngpR7b3ce0jTrwrjH9UVqVSGCi02Is6Gz3D3Pl0Qi5GgUHF9kE4SWWfW0', // Client ID de sandbox para desarrollo
   currency: 'USD',
   intent: 'capture',
   components: 'buttons',

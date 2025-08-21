@@ -9,16 +9,16 @@ interface PayPalDonationButtonProps {
 }
 
 const donationAmounts = [
-  { value: 5, label: '$5 USD' },
-  { value: 10, label: '$10 USD' },
-  { value: 25, label: '$25 USD' },
-  { value: 50, label: '$50 USD' },
-  { value: 100, label: '$100 USD' },
+  { value: 1, label: '1 USD' },
+  { value: 10, label: '10 USD' },
+  { value: 25, label: '25 USD' },
+  { value: 50, label: '50 USD' },
+  { value: 100, label: '100 USD' },
   { value: 0, label: 'Personalizado' }
 ];
 
 const PayPalDonationButton = ({ className = '' }: PayPalDonationButtonProps) => {
-  const [selectedAmount, setSelectedAmount] = useState(10);
+  const [selectedAmount, setSelectedAmount] = useState(1);
   const [customAmount, setCustomAmount] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
   const { toast } = useToast();
@@ -77,7 +77,7 @@ const PayPalDonationButton = ({ className = '' }: PayPalDonationButtonProps) => 
       console.log('Donación completada:', order);
       
       // Reset form
-      setSelectedAmount(10);
+      setSelectedAmount(1);
       setCustomAmount('');
       setShowCustomInput(false);
       
@@ -146,22 +146,23 @@ const PayPalDonationButton = ({ className = '' }: PayPalDonationButtonProps) => 
       <div className="space-y-4">
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            Donación de ${getFinalAmount()} USD
+            Donación de {getFinalAmount()} USD
           </p>
         </div>
         
-        {/* Single PayPal Button with Multiple Funding Sources */}
+        {/* PayPal Button - Solo PayPal, sin tarjetas */}
         <PayPalButtons
           createOrder={createOrder}
           onApprove={onApprove}
           onError={onError}
           style={{
             layout: 'vertical',
-            color: 'blue',
+            color: 'gold',
             shape: 'rect',
-            label: 'pay'
+            label: 'paypal'
           }}
           forceReRender={[selectedAmount, customAmount]}
+          fundingSource="paypal"
         />
       </div>
 

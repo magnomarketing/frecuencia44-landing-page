@@ -1,7 +1,7 @@
 import { Heart, Sparkles, Users, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import PayPalDonationButton from '@/components/PayPalDonationButton';
+import MercadoPagoButton from '@/components/MercadoPagoButton';
 
 const DonationSection = () => {
   const impactAreas = [
@@ -94,14 +94,14 @@ const DonationSection = () => {
               
               {/* Donation Methods */}
               <div className="space-y-6">
-                {/* PayPal Button */}
+                {/* Mercado Pago Button */}
                 <div className="space-y-3">
                   <div className="text-center">
                     <p className="text-sm text-muted-foreground mb-2">
-                      Dona con PayPal (USD)
+                      Donativo con Mercado Pago (ARS)
                     </p>
                   </div>
-                  <PayPalDonationButton className="w-full" />
+                  <MercadoPagoButton />
                 </div>
               </div>
 
