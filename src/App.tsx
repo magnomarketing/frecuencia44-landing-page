@@ -10,11 +10,14 @@ import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
-// Configuración de PayPal (usa el Client ID de sandbox para pruebas)
+// Configuración de PayPal
 const paypalOptions = {
-  clientId: 'test', // Cambiar por tu Client ID real de PayPal
+  clientId: process.env.NODE_ENV === 'production' 
+    ? 'ATGFv2fAp2mEKDjQktr-tAzKx-r7N8jOkmaCCvqFXYVI589Z4lu4Nx005khcivb51bCn8UBFVxJN9W1W' // Client ID de producción
+    : 'test', // Client ID de sandbox para desarrollo
   currency: 'USD',
   intent: 'capture',
+  components: 'buttons',
 };
 
 const App = () => (

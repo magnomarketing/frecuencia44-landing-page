@@ -44,14 +44,21 @@ const PayPalDonationButton = ({ className = '' }: PayPalDonationButtonProps) => 
 
   const createOrder = (data: any, actions: any) => {
     const amount = getFinalAmount();
+    
+    // Validar que el monto sea válido
+    if (amount <= 0 || isNaN(amount)) {
+      throw new Error('Monto inválido');
+    }
+    
     return actions.order.create({
       purchase_units: [
         {
           amount: {
-            value: amount.toString(),
+            value: amount.toFixed(2),
             currency_code: 'USD'
           },
-          description: `Donación voluntaria - Frecuencia 44 Masterclass`
+          description: `Donación voluntaria - Frecuencia 44 Masterclass`,
+          soft_descriptor: 'Frecuencia44'
         }
       ]
     });
@@ -88,7 +95,7 @@ const PayPalDonationButton = ({ className = '' }: PayPalDonationButtonProps) => 
     console.error('Error de PayPal:', err);
     toast({
       title: "Error de PayPal",
-      description: "Hubo un problema con PayPal. Por favor intenta nuevamente o usa otro método.",
+      description: "Hubo un problema con PayPal. Verifica tu conexión e intenta nuevamente. Si el problema persiste, contacta soporte.",
       variant: "destructive",
     });
   };
