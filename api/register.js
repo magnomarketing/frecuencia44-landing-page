@@ -1,5 +1,5 @@
 // Vercel Function para manejar registros del formulario
-export default async function handler(req, res) {
+export default function handler(req, res) {
   console.log('=== INICIO DE REGISTRO ===');
   console.log('Método:', req.method);
   console.log('URL:', req.url);
