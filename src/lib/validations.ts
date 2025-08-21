@@ -26,10 +26,7 @@ export const registrationSchema = z.object({
       message: "Ingresa un número de WhatsApp válido"
     }),
   
-  attendance: z
-    .enum(["virtual", "presencial"], {
-      required_error: "Selecciona una modalidad de asistencia"
-    }),
+
   
   dataConsent: z
     .boolean()

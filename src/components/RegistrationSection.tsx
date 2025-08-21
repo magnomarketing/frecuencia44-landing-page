@@ -40,10 +40,7 @@ const RegistrationSection = () => {
     "Participación en la transformación de Argentina"
   ];
 
-  const attendanceOptions = [
-    { value: "virtual", label: "Virtual por Zoom" },
-    { value: "presencial", label: "Presencial (si se confirma)" }
-  ];
+
 
   return (
     <section id="registro" className="py-24 bg-white">
@@ -142,13 +139,7 @@ const RegistrationSection = () => {
                     description="Para recordatorios y envío rápido del enlace de acceso"
                   />
 
-                  {/* Modalidad de Asistencia */}
-                  <FormRadioGroup
-                    name="attendance"
-                    label="¿Cómo planeas conectarte a la Masterclass?"
-                    options={attendanceOptions}
-                    required
-                  />
+
 
                   {/* Consentimiento de Datos */}
                   <FormCheckbox

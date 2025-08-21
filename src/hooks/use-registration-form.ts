@@ -14,7 +14,7 @@ export const useRegistrationForm = () => {
       email: '',
       location: '',
       whatsapp: '',
-      attendance: 'virtual',
+
       dataConsent: false
     },
     mode: 'onBlur', // Validar al perder el foco
@@ -47,7 +47,7 @@ export const useRegistrationForm = () => {
         [currentFormIds.email]: data.email,
         [currentFormIds.location]: data.location,
         [currentFormIds.whatsapp]: data.whatsapp || '',
-        [currentFormIds.attendance]: data.attendance,
+
         [currentFormIds.dataConsent]: data.dataConsent ? 'Sí' : 'No'
       });
 

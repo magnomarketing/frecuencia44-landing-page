@@ -6,7 +6,6 @@ export const currentFormIds = {
   email: 'entry.1807164578',
   location: 'entry.316240725',
   whatsapp: 'entry.588822403',
-  attendance: 'entry.1776417857',
   dataConsent: 'entry.1174231297'
 };
 
@@ -19,7 +18,7 @@ export const verifyFormIds = () => {
   console.log('- Email:', currentFormIds.email);
   console.log('- País y Ciudad:', currentFormIds.location);
   console.log('- WhatsApp:', currentFormIds.whatsapp);
-  console.log('- Modalidad:', currentFormIds.attendance);
+
   console.log('- Consentimiento:', currentFormIds.dataConsent);
   console.log('');
   console.log('URL del formulario:');
@@ -50,7 +49,7 @@ export const testFormSubmission = (data: any, customIds?: any) => {
     [ids.email]: data.email,
     [ids.location]: data.location,
     [ids.whatsapp]: data.whatsapp || '',
-    [ids.attendance]: data.attendance,
+
     [ids.dataConsent]: data.dataConsent ? 'Sí' : 'No'
   });
   
@@ -82,7 +81,7 @@ export const generateUpdateInstructions = (correctIds: any) => {
   console.log(`  '${correctIds.email}': data.email,`);
   console.log(`  '${correctIds.location}': data.location,`);
   console.log(`  '${correctIds.whatsapp}': data.whatsapp || '',`);
-  console.log(`  '${correctIds.attendance}': data.attendance,`);
+
   console.log(`  '${correctIds.dataConsent}': data.dataConsent ? 'Sí' : 'No'`);
   console.log('});');
   console.log('');
@@ -95,7 +94,7 @@ export const generateUpdateInstructions = (correctIds: any) => {
   console.log(`  email: '${correctIds.email}',`);
   console.log(`  location: '${correctIds.location}',`);
   console.log(`  whatsapp: '${correctIds.whatsapp}',`);
-  console.log(`  attendance: '${correctIds.attendance}',`);
+
   console.log(`  dataConsent: '${correctIds.dataConsent}'`);
   console.log('};');
 };
@@ -110,7 +109,6 @@ export const createTestForm = () => {
     email: 'juan@test.com',
     location: 'Argentina, Buenos Aires',
     whatsapp: '+54 9 11 1234-5678',
-    attendance: 'virtual',
     dataConsent: true
   };
   console.log(testData);
@@ -131,7 +129,6 @@ export const testWithCustomIds = (customIds: any) => {
     email: 'juan@test.com',
     location: 'Argentina, Buenos Aires',
     whatsapp: '+54 9 11 1234-5678',
-    attendance: 'virtual',
     dataConsent: true
   };
   
@@ -164,8 +161,7 @@ export const showQuickInstructions = () => {
   console.log('2. Email (Email)');
   console.log('3. País y Ciudad (Texto corto)');
   console.log('4. WhatsApp (Texto corto)');
-  console.log('5. Modalidad de Asistencia (Múltiple choice)');
-  console.log('6. Consentimiento de Datos (Checkbox)');
+  console.log('5. Consentimiento de Datos (Checkbox)');
   console.log('');
   console.log('📝 PASOS PARA OBTENER IDs:');
   console.log('1. Ve al formulario de arriba');
@@ -180,10 +176,118 @@ export const showQuickInstructions = () => {
   console.log('  email: "entry.TU_ID_REAL",           // Email');
   console.log('  location: "entry.TU_ID_REAL",        // País y Ciudad');
   console.log('  whatsapp: "entry.TU_ID_REAL",        // WhatsApp');
-  console.log('  attendance: "entry.TU_ID_REAL",      // Modalidad');
   console.log('  dataConsent: "entry.TU_ID_REAL"      // Consentimiento');
   console.log('});');
   console.log('');
   console.log('🧪 COMANDO PARA PROBAR:');
   console.log('testFormSubmission(createTestForm())');
+};
+
+// Función para probar automáticamente diferentes IDs comunes
+export const autoTestCommonIds = () => {
+  console.log('=== PRUEBA AUTOMÁTICA DE IDs COMUNES ===');
+  console.log('');
+  
+  // IDs comunes que Google Forms suele usar
+  const commonIdPatterns = [
+    // Patrón 1: IDs secuenciales
+    {
+      fullName: 'entry.1234567890',
+      email: 'entry.1234567891', 
+      location: 'entry.1234567892',
+      whatsapp: 'entry.1234567893',
+      dataConsent: 'entry.1234567894'
+    },
+    // Patrón 2: IDs con números similares
+    {
+      fullName: 'entry.2113807473',
+      email: 'entry.1807164578',
+      location: 'entry.316240725', 
+      whatsapp: 'entry.588822403',
+      dataConsent: 'entry.1776417857'
+    },
+    // Patrón 3: IDs con números diferentes
+    {
+      fullName: 'entry.9876543210',
+      email: 'entry.8765432109',
+      location: 'entry.7654321098',
+      whatsapp: 'entry.6543210987', 
+      dataConsent: 'entry.5432109876'
+    }
+  ];
+  
+  const testData = {
+    fullName: 'Juan Pérez',
+    email: 'juan@test.com',
+    location: 'Argentina, Buenos Aires',
+    whatsapp: '+54 9 11 1234-5678',
+    dataConsent: true
+  };
+  
+  console.log('Probando diferentes patrones de IDs...');
+  console.log('');
+  
+  commonIdPatterns.forEach((pattern, index) => {
+    console.log(`🧪 Patrón ${index + 1}:`);
+    console.log(pattern);
+    console.log('');
+    
+    const testUrl = testFormSubmission(testData, pattern);
+    console.log(`URL de prueba: ${testUrl}`);
+    console.log('---');
+  });
+  
+  console.log('');
+  console.log('📋 INSTRUCCIONES:');
+  console.log('1. Copia cada URL de prueba');
+  console.log('2. Pégalo en una nueva pestaña');
+  console.log('3. Si funciona, verás la página de Google Forms');
+  console.log('4. Si no funciona, verás un error');
+  console.log('5. El patrón que funcione tiene los IDs correctos');
+  
+  return commonIdPatterns;
+};
+
+// Función para generar URLs de prueba directas
+export const generateTestUrls = () => {
+  console.log('=== GENERAR URLs DE PRUEBA ===');
+  console.log('');
+  
+  const testData = {
+    fullName: 'Juan Pérez',
+    email: 'juan@test.com', 
+    location: 'Argentina, Buenos Aires',
+    whatsapp: '+54 9 11 1234-5678',
+    dataConsent: true
+  };
+  
+  // Probar con IDs actuales
+  console.log('🔗 URL con IDs actuales:');
+  const currentUrl = testFormSubmission(testData);
+  console.log(currentUrl);
+  console.log('');
+  
+  // Probar con IDs secuenciales
+  console.log('🔗 URL con IDs secuenciales:');
+  const sequentialIds = {
+    fullName: 'entry.1234567890',
+    email: 'entry.1234567891',
+    location: 'entry.1234567892', 
+    whatsapp: 'entry.1234567893',
+    dataConsent: 'entry.1234567894'
+  };
+  const sequentialUrl = testFormSubmission(testData, sequentialIds);
+  console.log(sequentialUrl);
+  console.log('');
+  
+  console.log('📝 INSTRUCCIONES:');
+  console.log('1. Copia cada URL');
+  console.log('2. Pégalo en una nueva pestaña');
+  console.log('3. Prueba cuál funciona');
+  console.log('4. Si funciona, esos son los IDs correctos');
+  
+  return {
+    current: currentUrl,
+    sequential: sequentialUrl
+  };
 };
