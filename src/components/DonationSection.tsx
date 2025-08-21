@@ -94,16 +94,11 @@ const DonationSection = () => {
               
               {/* Donation Methods */}
               <div className="space-y-6">
-                <Button variant="primary" size="lg" className="w-full">
-                  <Heart className="mr-2" size={20} />
-                  Donar con MercadoPago
-                </Button>
-                
                 {/* PayPal Button */}
                 <div className="space-y-3">
                   <div className="text-center">
                     <p className="text-sm text-muted-foreground mb-2">
-                      O dona con PayPal (USD)
+                      Dona con PayPal (USD)
                     </p>
                   </div>
                   <PayPalDonationButton className="w-full" />
