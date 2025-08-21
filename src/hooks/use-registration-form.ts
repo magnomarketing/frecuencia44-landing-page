@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useToast } from '@/hooks/use-toast'
 import { registrationSchema, type RegistrationFormData } from '@/lib/validations'
-import { currentFormIds, verifyFormIds, testFormSubmission, createTestForm } from '@/utils/form-id-verifier'
+import { currentFormIds, verifyFormIds, testFormSubmission, createTestForm, testWithCustomIds, updateFormIds, showQuickInstructions } from '@/utils/form-id-verifier'
 
 export const useRegistrationForm = () => {
   const { toast } = useToast()
@@ -29,6 +29,9 @@ export const useRegistrationForm = () => {
         description: "Por favor espera un momento",
       })
 
+      // Debug: Mostrar instrucciones rápidas
+      showQuickInstructions();
+      
       // Debug: Verificar IDs del formulario
       verifyFormIds();
       
@@ -48,7 +51,7 @@ export const useRegistrationForm = () => {
         [currentFormIds.dataConsent]: data.dataConsent ? 'Sí' : 'No'
       });
 
-      // URL del formulario (sin /u/0/ para evitar error 401)
+      // URL del formulario (confirmada por el usuario)
       const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse';
 
       // Debug: Mostrar URL de envío

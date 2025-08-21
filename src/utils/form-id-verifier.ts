@@ -120,3 +120,70 @@ export const createTestForm = () => {
   
   return testData;
 };
+
+// Nueva función para probar con IDs personalizados fácilmente
+export const testWithCustomIds = (customIds: any) => {
+  console.log('=== PRUEBA CON IDs PERSONALIZADOS ===');
+  console.log('IDs proporcionados:', customIds);
+  
+  const testData = {
+    fullName: 'Juan Pérez',
+    email: 'juan@test.com',
+    location: 'Argentina, Buenos Aires',
+    whatsapp: '+54 9 11 1234-5678',
+    attendance: 'virtual',
+    dataConsent: true
+  };
+  
+  return testFormSubmission(testData, customIds);
+};
+
+// Función para actualizar IDs automáticamente
+export const updateFormIds = (newIds: any) => {
+  console.log('=== ACTUALIZACIÓN DE IDs ===');
+  console.log('Nuevos IDs:', newIds);
+  
+  // Actualizar currentFormIds
+  Object.assign(currentFormIds, newIds);
+  
+  console.log('IDs actualizados. Ahora puedes probar el formulario.');
+  console.log('Para probar: testFormSubmission(createTestForm())');
+  
+  return currentFormIds;
+};
+
+// Función para mostrar instrucciones rápidas
+export const showQuickInstructions = () => {
+  console.log('=== INSTRUCCIONES RÁPIDAS ===');
+  console.log('');
+  console.log('📋 FORMULARIO CONFIRMADO:');
+  console.log('https://docs.google.com/forms/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/viewform');
+  console.log('');
+  console.log('🔍 CAMPOS A VERIFICAR:');
+  console.log('1. Nombre Completo (Texto corto)');
+  console.log('2. Email (Email)');
+  console.log('3. País y Ciudad (Texto corto)');
+  console.log('4. WhatsApp (Texto corto)');
+  console.log('5. Modalidad de Asistencia (Múltiple choice)');
+  console.log('6. Consentimiento de Datos (Checkbox)');
+  console.log('');
+  console.log('📝 PASOS PARA OBTENER IDs:');
+  console.log('1. Ve al formulario de arriba');
+  console.log('2. Click derecho en cada campo');
+  console.log('3. "Inspeccionar elemento"');
+  console.log('4. Busca: <input name="entry.XXXXX" ...>');
+  console.log('5. Anota los números después de "entry."');
+  console.log('');
+  console.log('⚡ COMANDO PARA ACTUALIZAR:');
+  console.log('updateFormIds({');
+  console.log('  fullName: "entry.TU_ID_REAL",        // Nombre Completo');
+  console.log('  email: "entry.TU_ID_REAL",           // Email');
+  console.log('  location: "entry.TU_ID_REAL",        // País y Ciudad');
+  console.log('  whatsapp: "entry.TU_ID_REAL",        // WhatsApp');
+  console.log('  attendance: "entry.TU_ID_REAL",      // Modalidad');
+  console.log('  dataConsent: "entry.TU_ID_REAL"      // Consentimiento');
+  console.log('});');
+  console.log('');
+  console.log('🧪 COMANDO PARA PROBAR:');
+  console.log('testFormSubmission(createTestForm())');
+};
