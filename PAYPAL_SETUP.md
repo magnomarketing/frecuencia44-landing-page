@@ -11,11 +11,6 @@
 
 ### **Paso 2: Obtener Credenciales de PayPal**
 
-1. **Inicia sesión** en tu cuenta de PayPal Business
-2. Ve a **"Herramientas"** → **"Centro de desarrolladores"**
-3. Click en **"Mis aplicaciones y credenciales"**
-4. **Crea una nueva aplicación** o usa la existente
-5. **Copia el Client ID** (necesario para la configuración)
 
 ### **Paso 3: Configurar el Código**
 

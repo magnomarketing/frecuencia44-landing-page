@@ -28,25 +28,22 @@ export const useRegistrationForm = () => {
         description: "Por favor espera un momento",
       })
 
-      // Enviar a Google Forms
-      const formDataToSend = new FormData()
-      
-      // IDs del formulario de Google Forms
-      formDataToSend.append('entry.2113807473', data.fullName)
-      formDataToSend.append('entry.1807164578', data.email)
-      formDataToSend.append('entry.316240725', data.location)
-      formDataToSend.append('entry.588822403', data.whatsapp || '')
-      formDataToSend.append('entry.1776417857', data.attendance)
-      formDataToSend.append('entry.1174231297', data.dataConsent ? 'Sí' : 'No')
-      
-      const response = await fetch(
-        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse',
-        {
-          method: 'POST',
-          body: formDataToSend,
-          mode: 'no-cors'
-        }
-      )
+      // Enviar a Google Forms usando método alternativo
+      const params = new URLSearchParams({
+        'entry.2113807473': data.fullName,
+        'entry.1807164578': data.email,
+        'entry.316240725': data.location,
+        'entry.588822403': data.whatsapp || '',
+        'entry.1776417857': data.attendance,
+        'entry.1174231297': data.dataConsent ? 'Sí' : 'No'
+      });
+
+      // URL del formulario (sin /u/0/ para evitar error 401)
+      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse';
+
+      // Enviar usando imagen invisible (método más confiable)
+      const img = new Image();
+      img.src = `${formUrl}?${params.toString()}`;
 
       // Como usamos no-cors, siempre retorna status 0, pero funciona
       toast({
