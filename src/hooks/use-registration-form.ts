@@ -66,7 +66,7 @@ export const useRegistrationForm = () => {
         title: "🎉 ¡Registro Exitoso!",
         description: "Confirmamos tu registro. Estarás recibiendo en los próximos días el enlace de la masterclass en tu correo electrónico.",
         variant: "success",
-        duration: 6000,
+        duration: 10000,
       })
 
       // Reset form
