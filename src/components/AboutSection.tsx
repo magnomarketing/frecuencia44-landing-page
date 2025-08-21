@@ -28,20 +28,7 @@ const AboutSection = () => {
   return (
     <section id="masterclass" className="py-24 bg-background-light">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-foreground mb-6">
-            Una Experiencia de
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Transformación</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            La Masterclass Frecuencia 44 es más que un evento: es el inicio de una transformación 
-            colectiva que busca activar la coherencia grupal y manifestar una Argentina libre, 
-            soberana e independiente en todos los aspectos.
-          </p>
-        </div>
-
-        {/* Video Section */}
+        {/* Video Section - PRIMERO */}
         <div className="text-center mb-16">
           <h3 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-8">
             Conoce Más Sobre
@@ -61,6 +48,19 @@ const AboutSection = () => {
               </div>
             </Card>
           </div>
+        </div>
+
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-foreground mb-6">
+            Una Experiencia de
+            <span className="bg-gradient-primary bg-clip-text text-transparent"> Transformación</span>
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            La Masterclass Frecuencia 44 es más que un evento: es el inicio de una transformación 
+            colectiva que busca activar la coherencia grupal y manifestar una Argentina libre, 
+            soberana e independiente en todos los aspectos.
+          </p>
         </div>
 
         {/* Objectives Grid */}
