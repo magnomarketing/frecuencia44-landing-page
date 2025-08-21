@@ -41,27 +41,6 @@ const AboutSection = () => {
           </p>
         </div>
 
-        {/* Objectives Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {objectives.map((objective, index) => (
-            <Card key={index} className="p-8 bg-card border-card-border hover:shadow-card transition-all duration-300">
-              <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0">
-                  {objective.icon}
-                </div>
-                <div>
-                  <h3 className="font-display font-semibold text-xl text-foreground mb-3">
-                    {objective.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {objective.description}
-                  </p>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
         {/* Video Section */}
         <div className="text-center mb-16">
           <h3 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-8">
@@ -82,6 +61,27 @@ const AboutSection = () => {
               </div>
             </Card>
           </div>
+        </div>
+
+        {/* Objectives Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {objectives.map((objective, index) => (
+            <Card key={index} className="p-8 bg-card border-card-border hover:shadow-card transition-all duration-300">
+              <div className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  {objective.icon}
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-xl text-foreground mb-3">
+                    {objective.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {objective.description}
+                  </p>
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
 
       </div>
