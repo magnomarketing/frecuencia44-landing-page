@@ -99,21 +99,21 @@ const RegistrationSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Enviar a Formspree (solución alternativa)
-      const response = await fetch('https://formspree.io/f/xayzqkqp', {
+      // Enviar a Google Forms (sin límites, gratis)
+      const formDataToSend = new FormData();
+      
+      // IDs del formulario de Google Forms
+      formDataToSend.append('entry.2113807473', formData.fullName);        // Nombre Completo
+      formDataToSend.append('entry.1807164578', formData.email);           // Email
+      formDataToSend.append('entry.316240725', formData.location);         // País y Ciudad
+      formDataToSend.append('entry.588822403', formData.whatsapp || '');   // WhatsApp
+      formDataToSend.append('entry.1776417857', formData.attendance);      // Modalidad
+      formDataToSend.append('entry.1174231297', formData.dataConsent ? 'Sí' : 'No'); // Consentimiento
+      
+      const response = await fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSfD78M_ZXzk36jwNRAleUXf5MzjX33_fisPY5032llepmznYw/formResponse', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          email: formData.email,
-          location: formData.location,
-          whatsapp: formData.whatsapp,
-          attendance: formData.attendance,
-          dataConsent: formData.dataConsent,
-          subject: 'Nuevo registro - Frecuencia 44'
-        }),
+        body: formDataToSend,
+        mode: 'no-cors' // Importante para evitar errores CORS
       });
 
       if (response.ok) {
