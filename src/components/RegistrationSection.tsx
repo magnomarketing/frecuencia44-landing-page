@@ -99,8 +99,8 @@ const RegistrationSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Enviar a Vercel Function (versión de prueba)
-      const response = await fetch('/api/register-test', {
+      // Enviar a Vercel Function
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
