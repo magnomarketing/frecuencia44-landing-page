@@ -54,7 +54,7 @@ const MethodologySection = () => {
   ];
 
   return (
-    <section id="metodologia" className="py-24 bg-background">
+    <section id="metodologia" className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -114,10 +114,10 @@ const MethodologySection = () => {
               Enfoque Universal y Accesible
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Utilizamos un lenguaje accesible y universal, evitando confusiones. 
-              Nos enfocamos en el <strong className="text-accent">fortalecimiento del campo emocional y áurico</strong>, 
-              <strong className="text-accent"> prácticas de luz</strong> y <strong className="text-accent">unidad colectiva</strong> 
-              para crear una experiencia comprensible y transformadora para todos.
+              Usamos un lenguaje claro y universal. <strong className="text-accent">Cada persona es parte esencial de esta experiencia.</strong> 
+              Nuestro enfoque es elevar la frecuencia de la alegría y la unidad, fortaleciendo el campo emocional y áurico mediante 
+              prácticas de luz, conciencia y conexión colectiva. De esta manera, creamos un espacio transformador, cercano y lleno 
+              de propósito, donde todos nos reconocemos como una sola comunidad en expansión.
             </p>
           </div>
         </div>

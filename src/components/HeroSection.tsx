@@ -70,7 +70,12 @@ const HeroSection = () => {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
         
-          <Button variant="outline" size="lg" className="text-lg px-8" asChild>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 w-full sm:w-auto max-w-sm sm:max-w-none text-center whitespace-normal sm:whitespace-nowrap" 
+            asChild
+          >
             <a href="#registro">Registrate y recibe la liga de Zoom a tu correo.</a>
           </Button>
         </div>

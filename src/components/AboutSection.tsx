@@ -26,7 +26,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="masterclass" className="py-24 bg-background-light">
+    <section id="masterclass" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Video Section - PRIMERO */}
         <div className="text-center mb-16">

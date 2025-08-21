@@ -12,22 +12,22 @@ const RegistrationSection = () => {
     {
       icon: <Calendar className="text-accent" size={24} />,
       title: "Fecha",
-      value: "27 de Septiembre 2025"
+      value: "24 de Agosto 2025"
     },
     {
       icon: <Clock className="text-accent" size={24} />,
       title: "Horario",
-      value: "Por confirmar"
+      value: "15:00 hrs (hora Argentina)"
     },
     {
       icon: <MapPin className="text-accent" size={24} />,
-      title: "Ubicación",
-      value: "Tucumán, Argentina"
+      title: "Modalidad",
+      value: "Virtual por Zoom"
     },
     {
       icon: <Users className="text-accent" size={24} />,
-      title: "Modalidad",
-      value: "Presencial y Virtual"
+      title: "Cupo",
+      value: "Limitado a 1,000 personas"
     }
   ];
 
@@ -41,22 +41,22 @@ const RegistrationSection = () => {
   ];
 
   const attendanceOptions = [
-    { value: "virtual", label: "Virtual" },
-    { value: "presencial", label: "Presencial en Tucumán" }
+    { value: "virtual", label: "Virtual por Zoom" },
+    { value: "presencial", label: "Presencial (si se confirma)" }
   ];
 
   return (
-    <section id="registro" className="py-24 bg-background">
+    <section id="registro" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-display font-bold text-4xl md:text-5xl text-foreground mb-6">
-            Registro para el
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Evento Tucumán</span>
+            Registro para la
+            <span className="bg-gradient-primary bg-clip-text text-transparent"> Master Class</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Únete a esta experiencia única que se realizará el 27 de septiembre en Tucumán,
-            con modalidad presencial y virtual. Forma parte de la transformación colectiva.
+            Al correo que registres recibirás el link de acceso por Zoom para conectarte a la MasterClass "Alquimia de Pactos y Lealtades" el Domingo 24 de agosto de 2025 a las 15:00 hrs (hora Argentina).<br />
+            ⚡ Cupo virtual limitado a 1,000 personas. ¡Asegura tu lugar!
           </p>
         </div>
 
@@ -66,7 +66,7 @@ const RegistrationSection = () => {
             {/* Event Details */}
             <div>
               <h3 className="font-display font-bold text-2xl text-foreground mb-6">
-                Detalles del Evento
+                Detalles del Festval Argentina Libre
               </h3>
               <div className="space-y-4">
                 {eventDetails.map((detail, index) => (
@@ -84,7 +84,7 @@ const RegistrationSection = () => {
             {/* Benefits */}
             <div>
               <h3 className="font-display font-bold text-2xl text-foreground mb-6">
-                Beneficios Incluidos
+                Lo que recibirás en la Masterclass del domingo 24 de Agosto a las 15 hrs
               </h3>
               <div className="space-y-3">
                 {benefits.map((benefit, index) => (
@@ -101,7 +101,7 @@ const RegistrationSection = () => {
           <div>
             <Card className="p-8 bg-card border-card-border shadow-elegant">
               <h3 className="font-display font-bold text-2xl text-foreground mb-6">
-                Registro al Evento
+                Master Class
               </h3>
 
               <Form {...form}>
@@ -121,7 +121,7 @@ const RegistrationSection = () => {
                     type="email"
                     placeholder="ejemplo@correo.com"
                     required
-                    description="Te enviaremos el enlace de acceso a esta dirección"
+                    description="Te enviaremos el link de Zoom a esta dirección"
                   />
 
                   {/* País y Ciudad */}
@@ -130,7 +130,7 @@ const RegistrationSection = () => {
                     label="País y Ciudad"
                     placeholder="País, Ciudad"
                     required
-                    description="Nos ayuda a mapear la red de participantes"
+                    description="Nos ayuda a mapear la red global de participantes"
                   />
 
                   {/* WhatsApp */}
@@ -145,7 +145,7 @@ const RegistrationSection = () => {
                   {/* Modalidad de Asistencia */}
                   <FormRadioGroup
                     name="attendance"
-                    label="¿Cómo planeas asistir al evento del 27 de septiembre?"
+                    label="¿Cómo planeas conectarte a la Masterclass?"
                     options={attendanceOptions}
                     required
                   />
@@ -169,7 +169,7 @@ const RegistrationSection = () => {
                       "Procesando registro..."
                     ) : (
                       <>
-                        Registrarme al Evento
+                        Registrarme a la Masterclass
                         <ArrowRight className="ml-2" size={20} />
                       </>
                     )}

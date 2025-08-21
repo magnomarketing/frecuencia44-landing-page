@@ -1,6 +1,7 @@
 import { Heart, Sparkles, Users, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import PayPalDonationButton from '@/components/PayPalDonationButton';
 
 const DonationSection = () => {
   const impactAreas = [
@@ -24,7 +25,7 @@ const DonationSection = () => {
 
 
   return (
-    <section id="donativo" className="py-24 bg-background">
+    <section id="donativo" className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -92,16 +93,21 @@ const DonationSection = () => {
               </h3>
               
               {/* Donation Methods */}
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <Button variant="primary" size="lg" className="w-full">
                   <Heart className="mr-2" size={20} />
                   Donar con MercadoPago
                 </Button>
                 
-                <Button variant="outline" size="lg" className="w-full">
-                  <Heart className="mr-2" size={20} />
-                  Donar con PayPal
-                </Button>
+                {/* PayPal Button */}
+                <div className="space-y-3">
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      O dona con PayPal (USD)
+                    </p>
+                  </div>
+                  <PayPalDonationButton className="w-full" />
+                </div>
               </div>
 
               <div className="mt-6 pt-6 border-t border-card-border text-center">
