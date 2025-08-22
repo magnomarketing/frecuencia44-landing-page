@@ -19,7 +19,7 @@ Landing page para el evento Frecuencia 44 con formulario de registro funcional u
 - ✅ Diseño responsive
 - ✅ SEO optimizado
 - ✅ Botón scroll-to-top
-- ✅ Widget Ko-fi integrado
+
 
 ## 🔧 Configuración del Formulario
 

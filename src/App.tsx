@@ -7,6 +7,7 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingDonationButton from "./components/FloatingDonationButton";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
           </Routes>
         </BrowserRouter>
         <ScrollToTop />
+        <FloatingDonationButton />
       </TooltipProvider>
     </PayPalScriptProvider>
   </QueryClientProvider>
