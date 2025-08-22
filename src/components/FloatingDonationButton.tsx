@@ -10,14 +10,14 @@ const FloatingDonationButton: React.FC = () => {
       onClick={handleDonationClick}
       className="fixed bottom-6 left-6 z-50 flex items-center gap-2 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
       style={{
-        backgroundColor: 'hsl(194.06, 100%, 74.9%)', // Color HSL de la imagen
+        backgroundColor: '#00B9FE', // Color azul especificado
         boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = 'hsl(194.06, 100%, 64.9%)'; // Versión más oscura
+        e.currentTarget.style.backgroundColor = '#0098D4'; // Versión más oscura
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = 'hsl(194.06, 100%, 74.9%)'; // Volver al color original
+        e.currentTarget.style.backgroundColor = '#00B9FE'; // Volver al color original
       }}
     >
       <img 
