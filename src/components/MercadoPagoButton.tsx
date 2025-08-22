@@ -3,7 +3,7 @@ import { CreditCard } from 'lucide-react';
 
 const MercadoPagoButton = () => {
   const handlePayment = () => {
-    window.open('https://link.mercadopago.com.mx/anajulietareyes', '_blank');
+    window.open('https://link.mercadopago.com.ar/argentina44', '_blank');
   };
 
   return (
