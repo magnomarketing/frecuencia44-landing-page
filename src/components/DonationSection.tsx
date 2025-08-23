@@ -103,6 +103,31 @@ const DonationSection = () => {
                   </div>
                   <MercadoPagoButton />
                 </div>
+
+                {/* Transferencia Bancaria */}
+                <div className="space-y-3">
+                  <div className="text-center">
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Transferencia Bancaria
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div className="space-y-2 text-sm">
+                      <div className="flex justify-between">
+                        <span className="font-medium text-gray-700">Alias:</span>
+                        <span className="font-mono text-gray-900">copas.dado.pure.mp</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium text-gray-700">CVU:</span>
+                        <span className="font-mono text-gray-900">0000003100062666949819</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="font-medium text-gray-700">Nombre:</span>
+                        <span className="text-gray-900">Karina Andrea Gomez Nader</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-6 pt-6 border-t border-card-border text-center">
