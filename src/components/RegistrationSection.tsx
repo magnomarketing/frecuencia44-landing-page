@@ -4,9 +4,17 @@ import { Card } from '@/components/ui/card';
 import { Form } from '@/components/ui/form';
 import { FormFieldComponent, FormRadioGroup, FormCheckbox } from '@/components/ui/form-field';
 import { useRegistrationForm } from '@/hooks/use-registration-form';
+import SuccessModal from './SuccessModal';
 
 const RegistrationSection = () => {
-  const { form, handleSubmit, isSubmitting } = useRegistrationForm();
+  const { 
+    form, 
+    handleSubmit, 
+    isSubmitting, 
+    showSuccessModal, 
+    setShowSuccessModal, 
+    registeredUserName 
+  } = useRegistrationForm();
 
 
 
@@ -130,6 +138,13 @@ const RegistrationSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        userName={registeredUserName}
+      />
     </section>
   );
 };

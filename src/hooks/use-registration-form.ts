@@ -3,9 +3,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useToast } from '@/hooks/use-toast'
 import { registrationSchema, type RegistrationFormData } from '@/lib/validations'
 import { currentFormIds, verifyFormIds, testFormSubmission, createTestForm, testWithCustomIds, updateFormIds, showQuickInstructions } from '@/utils/form-id-verifier'
+import { useState } from 'react'
 
 export const useRegistrationForm = () => {
   const { toast } = useToast()
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [registeredUserName, setRegisteredUserName] = useState('')
 
   const form = useForm<RegistrationFormData>({
     resolver: zodResolver(registrationSchema),
@@ -61,13 +64,11 @@ export const useRegistrationForm = () => {
       const img = new Image();
       img.src = `${formUrl}?${params.toString()}`;
 
-      // Como usamos no-cors, siempre retorna status 0, pero funciona
-      toast({
-        title: "🎉 ¡Registro Exitoso!",
-        description: "Confirmamos tu registro. Estarás recibiendo en los próximos días el enlace de la masterclass en tu correo electrónico.",
-        variant: "success",
-        duration: 10000,
-      })
+      // Guardar el nombre del usuario registrado
+      setRegisteredUserName(data.fullName)
+      
+      // Mostrar modal de éxito
+      setShowSuccessModal(true)
 
       // Reset form
       form.reset()
@@ -94,6 +95,9 @@ export const useRegistrationForm = () => {
     watch: form.watch,
     reset: form.reset,
     setValue: form.setValue,
-    getValues: form.getValues
+    getValues: form.getValues,
+    showSuccessModal,
+    setShowSuccessModal,
+    registeredUserName
   }
 }
