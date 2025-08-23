@@ -10,7 +10,7 @@ const MercadoPagoButton = () => {
     <Button 
       onClick={handlePayment}
       size="lg" 
-      className="w-full bg-yellow-500 hover:bg-blue-600 text-white font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+      className="w-full bg-accent hover:bg-accent-dark text-accent-foreground font-bold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
     >
       <CreditCard className="mr-2 h-5 w-5" />
       DONATIVO CON MERCADO PAGO

@@ -1,4 +1,4 @@
-import { Calendar, Clock, Users, Gift, CheckCircle, ArrowRight, MapPin, Phone } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Form } from '@/components/ui/form';
@@ -8,28 +8,7 @@ import { useRegistrationForm } from '@/hooks/use-registration-form';
 const RegistrationSection = () => {
   const { form, handleSubmit, isSubmitting } = useRegistrationForm();
 
-  const eventDetails = [
-    {
-      icon: <Calendar className="text-accent" size={24} />,
-      title: "Fecha",
-      value: "24 de Agosto 2025"
-    },
-    {
-      icon: <Clock className="text-accent" size={24} />,
-      title: "Horario",
-      value: "15:00 hrs (hora Argentina)"
-    },
-    {
-      icon: <MapPin className="text-accent" size={24} />,
-      title: "Modalidad",
-      value: "Virtual por Zoom"
-    },
-    {
-      icon: <Users className="text-accent" size={24} />,
-      title: "Cupo",
-      value: "Limitado a 1,000 personas"
-    }
-  ];
+
 
   const benefits = [
     "Experiencia transformadora única",
@@ -57,45 +36,24 @@ const RegistrationSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Event Details & Benefits */}
-          <div className="space-y-8">
-            {/* Event Details */}
-            <div>
-              <h3 className="font-display font-bold text-2xl text-foreground mb-6">
-                Detalles del Festval Argentina Libre
-              </h3>
-              <div className="space-y-4">
-                {eventDetails.map((detail, index) => (
-                  <div key={index} className="flex items-center space-x-4">
-                    {detail.icon}
-                    <div>
-                      <p className="font-medium text-foreground">{detail.title}</p>
-                      <p className="text-muted-foreground">{detail.value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Benefits */}
-            <div>
-              <h3 className="font-display font-bold text-2xl text-foreground mb-6">
-                Lo que recibirás en la Masterclass del domingo 24 de Agosto a las 15 hrs
-              </h3>
-              <div className="space-y-3">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="text-accent flex-shrink-0" size={20} />
-                    <span className="text-muted-foreground">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Benefits */}
+          <div className="mb-12">
+            <h3 className="font-display font-bold text-2xl text-foreground mb-6 text-center">
+              Lo que recibirás en la Masterclass del domingo 24 de Agosto a las 15 hrs
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <CheckCircle className="text-accent flex-shrink-0" size={20} />
+                  <span className="text-muted-foreground">{benefit}</span>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Registration Form */}
-          <div>
+          <div className="max-w-md mx-auto">
             <Card className="p-8 bg-card border-card-border shadow-elegant">
               <h3 className="font-display font-bold text-2xl text-foreground mb-6">
                 Master Class
