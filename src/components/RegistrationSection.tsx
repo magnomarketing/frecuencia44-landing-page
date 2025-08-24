@@ -46,7 +46,7 @@ const RegistrationSection = () => {
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-xl shadow-elegant p-6">
               <h3 className="font-display font-bold text-2xl text-foreground mb-6 text-center">
-                Master Class
+                Masterclass - Alquimia de Pactos y Realidades
               </h3>
               
               <iframe 
