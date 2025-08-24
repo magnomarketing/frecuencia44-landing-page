@@ -52,8 +52,9 @@ const RegistrationSection = () => {
               <iframe 
                 width="540" 
                 height="800" 
-                src="https://f0e44c8a.sibforms.com/serve/MUIFAK905QvemTWEpPkAfAzcQViCckvl8GyR3my5cv7k4Iubk-XL4AdKuU-N8USlFqaHMJsT7pDp2uVHBlQrOooMS1IQXPbSaumtnempHJCokio2TjtPqUa6pNWieWC2D74IKFlf5uanvOqe1aNslOmLaYbfxXPP6cq-3rJxCTBpLP4lfiyNPfsxU7YLE71YzybkvRWfXDXXu_B-" 
+                src="https://f0e44c8a.sibforms.com/serve/MUIFAEZ2_ERvIlfLz1iJga42P81B5yOFr0etKHrgX_lDrALh9DOkhgI7MaYhwZ8ZIogrnNuBHrnAQr2syttlJ0Bk0CqdWm4xgCUlDxdp4bw_cVKSlFel178qR5t60MuQZVxjzaQaeLwD8oYLowip2E3eYVN_6v0mPKP_VAxAvu_iFpLtHZqjXhkU7QJnHM8TNeGQNW14tTdpn_Fh" 
                 frameBorder="0" 
+                scrolling="auto" 
                 allowFullScreen 
                 style={{ 
                   display: 'block',
