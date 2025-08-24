@@ -1,17 +1,33 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export default async function handler(request) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json'
+  };
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 200, headers });
+  }
+
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ message: 'Method not allowed' }), { 
+      status: 405, 
+      headers 
+    });
   }
 
   try {
-    const { email, fullName } = req.body;
+    const body = await request.json();
+    const { email, fullName } = body;
 
     if (!email || !fullName) {
-      return res.status(400).json({ message: 'Email and fullName are required' });
+      return new Response(JSON.stringify({ message: 'Email and fullName are required' }), { 
+        status: 400, 
+        headers 
+      });
     }
 
     const zoomLink = 'https://us02web.zoom.us/j/82510738233?pwd=alt0W3fzEAUrmRyY8bZiTtcFQU3bDV.1';
@@ -103,6 +119,7 @@ export default async function handler(req, res) {
       </html>
     `;
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
       from: `${process.env.RESEND_FROM_NAME || 'Frecuencia 44'} <${process.env.RESEND_FROM_EMAIL || 'info@festivalargentinalibre.org'}>`,
       to: email,
@@ -112,12 +129,21 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error('Error sending email:', error);
-      return res.status(500).json({ message: 'Error sending email', error: error.message });
+      return new Response(JSON.stringify({ message: 'Error sending email', error: error.message }), { 
+        status: 500, 
+        headers 
+      });
     }
 
-    return res.status(200).json({ message: 'Email sent successfully', data });
+    return new Response(JSON.stringify({ message: 'Email sent successfully', data }), { 
+      status: 200, 
+      headers 
+    });
   } catch (error) {
     console.error('Error in send-confirmation-email:', error);
-    return res.status(500).json({ message: 'Internal server error', error: error.message });
+    return new Response(JSON.stringify({ message: 'Internal server error', error: error.message }), { 
+      status: 500, 
+      headers 
+    });
   }
 }

@@ -1,4 +1,15 @@
-export default async function handler(req, res) {
+export default async function handler(request) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json'
+  };
+
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 200, headers });
+  }
+
   try {
     console.log('🔍 Iniciando prueba simple de Resend...');
     
@@ -15,19 +26,19 @@ export default async function handler(req, res) {
       console.log('✅ Resend importado correctamente');
     } catch (importError) {
       console.error('❌ Error importando Resend:', importError);
-      return res.status(500).json({
+      return new Response(JSON.stringify({
         error: 'Error importando Resend',
         details: importError.message,
         timestamp: new Date().toISOString()
-      });
+      }), { status: 500, headers });
     }
     
     // Verificar que la API key esté configurada
     if (!process.env.RESEND_API_KEY) {
-      return res.status(500).json({
+      return new Response(JSON.stringify({
         error: 'RESEND_API_KEY no está configurada',
         timestamp: new Date().toISOString()
-      });
+      }), { status: 500, headers });
     }
     
     // Intentar inicializar Resend
@@ -37,27 +48,27 @@ export default async function handler(req, res) {
       console.log('✅ Resend inicializado correctamente');
     } catch (initError) {
       console.error('❌ Error inicializando Resend:', initError);
-      return res.status(500).json({
+      return new Response(JSON.stringify({
         error: 'Error inicializando Resend',
         details: initError.message,
         timestamp: new Date().toISOString()
-      });
+      }), { status: 500, headers });
     }
     
-    return res.status(200).json({
+    return new Response(JSON.stringify({
       success: true,
       message: 'Resend configurado correctamente',
       fromEmail: process.env.RESEND_FROM_EMAIL,
       fromName: process.env.RESEND_FROM_NAME,
       timestamp: new Date().toISOString()
-    });
+    }), { status: 200, headers });
     
   } catch (error) {
     console.error('❌ Error general:', error);
-    return res.status(500).json({
+    return new Response(JSON.stringify({
       error: 'Error general',
       details: error.message,
       timestamp: new Date().toISOString()
-    });
+    }), { status: 500, headers });
   }
 }

@@ -1,14 +1,17 @@
 import { Resend } from 'resend';
 
-export default async function handler(req, res) {
+export default async function handler(request) {
   // Configurar CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json'
+  };
 
   // Manejar preflight requests
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 200, headers });
   }
 
   try {
@@ -17,11 +20,11 @@ export default async function handler(req, res) {
     // Verificar que la API key esté configurada
     if (!process.env.RESEND_API_KEY) {
       console.error('❌ RESEND_API_KEY no está configurada');
-      return res.status(500).json({ 
+      return new Response(JSON.stringify({ 
         error: 'RESEND_API_KEY no está configurada',
         message: 'Verifica las variables de entorno en Vercel',
         timestamp: new Date().toISOString()
-      });
+      }), { status: 500, headers });
     }
 
     // Verificar que las variables de email estén configuradas
@@ -52,21 +55,21 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error('❌ Error de Resend:', error);
-      return res.status(500).json({ 
+      return new Response(JSON.stringify({ 
         error: 'Error de Resend',
         details: error.message,
         code: error.statusCode || 'UNKNOWN',
         timestamp: new Date().toISOString()
-      });
+      }), { status: 500, headers });
     }
 
     console.log('✅ Configuración correcta:', data);
-    return res.status(200).json({ 
+    return new Response(JSON.stringify({ 
       success: true,
       message: 'Configuración de Resend correcta',
       data: data,
       timestamp: new Date().toISOString()
-    });
+    }), { status: 200, headers });
 
   } catch (error) {
     console.error('❌ Error general:', error);
@@ -83,11 +86,11 @@ export default async function handler(req, res) {
       errorMessage = 'Error de tipo en la configuración';
     }
 
-    return res.status(500).json({ 
+    return new Response(JSON.stringify({ 
       error: errorMessage,
       details: errorDetails,
       code: error.code || 'UNKNOWN',
       timestamp: new Date().toISOString()
-    });
+    }), { status: 500, headers });
   }
 }
