@@ -1,23 +1,7 @@
-import { CheckCircle, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Form } from '@/components/ui/form';
-import { FormFieldComponent, FormRadioGroup, FormCheckbox } from '@/components/ui/form-field';
-import { useRegistrationForm } from '@/hooks/use-registration-form';
+import { CheckCircle } from 'lucide-react';
 import SuccessModal from './SuccessModal';
 
 const RegistrationSection = () => {
-  const { 
-    form, 
-    handleSubmit, 
-    isSubmitting, 
-    showSuccessModal, 
-    setShowSuccessModal, 
-    registeredUserName 
-  } = useRegistrationForm();
-
-
-
   const benefits = [
     "Experiencia transformadora única",
     "Conexión con el Grupo Diamante",
@@ -26,8 +10,6 @@ const RegistrationSection = () => {
     "Acceso a comunidad privada",
     "Participación en la transformación de Argentina"
   ];
-
-
 
   return (
     <section id="registro" className="py-24 bg-white">
@@ -60,91 +42,32 @@ const RegistrationSection = () => {
             </div>
           </div>
 
-          {/* Registration Form */}
-          <div className="max-w-md mx-auto">
-            <Card className="p-8 bg-card border-card-border shadow-elegant">
-              <h3 className="font-display font-bold text-2xl text-foreground mb-6">
+          {/* Registration Form - Iframe */}
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-xl shadow-elegant p-6">
+              <h3 className="font-display font-bold text-2xl text-foreground mb-6 text-center">
                 Master Class
               </h3>
-
-              <Form {...form}>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Nombre Completo */}
-                  <FormFieldComponent
-                    name="fullName"
-                    label="Nombre Completo"
-                    placeholder="Ingresa tu nombre completo"
-                    required
-                  />
-
-                  {/* Email */}
-                  <FormFieldComponent
-                    name="email"
-                    label="Correo Electrónico"
-                    type="email"
-                    placeholder="ejemplo@correo.com"
-                    required
-                    description="Te enviaremos el link de Zoom a esta dirección"
-                  />
-
-                  {/* País y Ciudad */}
-                  <FormFieldComponent
-                    name="location"
-                    label="País y Ciudad"
-                    placeholder="País, Ciudad"
-                    required
-                    description="Nos ayuda a mapear la red global de participantes"
-                  />
-
-                  {/* WhatsApp */}
-                  <FormFieldComponent
-                    name="whatsapp"
-                    label="WhatsApp"
-                    type="tel"
-                    placeholder="+54 9 11 1234-5678"
-                    description="Para recordatorios y envío rápido del enlace de acceso"
-                  />
-
-
-
-
-
-                  {/* Submit Button */}
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      "Procesando registro..."
-                    ) : (
-                      <>
-                        Registrarme a la Masterclass
-                        <ArrowRight className="ml-2" size={20} />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </Form>
-
-              <div className="mt-6 pt-6 border-t border-card-border">
-                <p className="text-sm text-muted-foreground text-center">
-                  Los campos marcados con * son obligatorios.<br />
-                  Al enviar el formulario estás aceptando el tratamiento de mis datos personales para fines de organización y comunicación de este evento*
-                </p>
-              </div>
-            </Card>
+              
+              <iframe 
+                width="540" 
+                height="305" 
+                src="https://f0e44c8a.sibforms.com/serve/MUIFABv9taJ1WzftDUnX-4nxGktajb4Ds5DMNxTkQkj2So12_uCmJRFfzBGsRcG-dF0X-wqn1MV6PBzKJXIikNH_zEjRTu-q8dPFH4MW06F5jvO9UfSRASVnDOy4f-0Vk28cuYgiwzVL0VIV9dWk1gBvgMY39XwsC22iH58ZhrQ9Mg9ZrWpPzbYNGtTKvUdjozgfvNrfT4nQjf_A" 
+                frameBorder="0" 
+                scrolling="auto" 
+                allowFullScreen 
+                style={{ 
+                  display: 'block',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  maxWidth: '100%'
+                }}
+                title="Formulario de Registro - Masterclass Frecuencia 44"
+              />
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Success Modal */}
-      <SuccessModal
-        isOpen={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
-        userName={registeredUserName}
-      />
     </section>
   );
 };
