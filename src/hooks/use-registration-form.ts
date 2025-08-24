@@ -66,7 +66,12 @@ export const useRegistrationForm = () => {
 
       // Enviar email de confirmación con enlace de Zoom
       try {
-        const emailResponse = await fetch('/api/send-confirmation-email', {
+        // Usar URL relativa que funciona en ambos dominios
+        const apiUrl = window.location.hostname.includes('vercel.app') 
+          ? 'https://frecuencia44-landing-page-1xk1t3nqm-magnomarketings-projects.vercel.app/api/send-confirmation-email'
+          : '/api/send-confirmation-email';
+          
+        const emailResponse = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
