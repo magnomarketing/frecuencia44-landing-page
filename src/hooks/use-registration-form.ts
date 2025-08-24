@@ -64,6 +64,26 @@ export const useRegistrationForm = () => {
       const img = new Image();
       img.src = `${formUrl}?${params.toString()}`;
 
+      // Enviar email de confirmación con enlace de Zoom
+      try {
+        const emailResponse = await fetch('/api/send-confirmation-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: data.email,
+            fullName: data.fullName
+          })
+        });
+
+        if (!emailResponse.ok) {
+          console.error('Error sending confirmation email');
+        }
+      } catch (emailError) {
+        console.error('Error sending confirmation email:', emailError);
+      }
+
       // Guardar el nombre del usuario registrado
       setRegisteredUserName(data.fullName)
       

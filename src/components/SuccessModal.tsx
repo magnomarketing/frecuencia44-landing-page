@@ -48,18 +48,35 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpen, onClose, userName }
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <p className="text-sm text-blue-800">
-              📧 <strong>Revisa tu correo electrónico</strong><br />
-              Te enviaremos el dia de mañana temprano el enlace de Zoom para la Masterclass del 24 de agosto. No es necesario que te registres nuevamente.
+              📧 <strong>Revisa tu correo electrónico Mañana por la mañana</strong><br />
+              Te enviaremos el día de mañana temprano el enlace de Zoom para la Masterclass del 24 de agosto. <br /> No es necesario que te registres nuevamente.
             </p>
           </div>
 
-          {/* Action button */}
-          <Button
-            onClick={onClose}
-            className="w-full bg-accent hover:bg-accent-dark text-accent-foreground font-semibold py-3"
-          >
-            Continuar
-          </Button>
+          {/* Action buttons */}
+          <div className="space-y-3">
+            <Button
+              onClick={onClose}
+              className="w-full border-accent  hover:bg-accent hover:text-accent-foreground font-semibold py-3"
+            >
+              Continuar y Salir
+            </Button>
+            
+            <Button
+              onClick={() => {
+                onClose();
+                // Scroll to donation section
+                const donationSection = document.getElementById('donativo');
+                if (donationSection) {
+                  donationSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              variant="outline"
+              className="w-full bg-accent hover:bg-accent-dark text-accent-foreground font-semibold py-3"
+            >
+              💙 Continuar y Aportar un Granito de Arena
+            </Button>
+          </div>
         </div>
       </div>
     </div>
