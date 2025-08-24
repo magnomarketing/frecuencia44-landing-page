@@ -51,7 +51,7 @@ const RegistrationSection = () => {
               
               <iframe 
                 width="540" 
-                height="305" 
+                height="600" 
                 src="https://f0e44c8a.sibforms.com/serve/MUIFABv9taJ1WzftDUnX-4nxGktajb4Ds5DMNxTkQkj2So12_uCmJRFfzBGsRcG-dF0X-wqn1MV6PBzKJXIikNH_zEjRTu-q8dPFH4MW06F5jvO9UfSRASVnDOy4f-0Vk28cuYgiwzVL0VIV9dWk1gBvgMY39XwsC22iH58ZhrQ9Mg9ZrWpPzbYNGtTKvUdjozgfvNrfT4nQjf_A" 
                 frameBorder="0" 
                 scrolling="auto" 
@@ -60,7 +60,8 @@ const RegistrationSection = () => {
                   display: 'block',
                   marginLeft: 'auto',
                   marginRight: 'auto',
-                  maxWidth: '100%'
+                  maxWidth: '100%',
+                  minHeight: '600px'
                 }}
                 title="Formulario de Registro - Masterclass Frecuencia 44"
               />
