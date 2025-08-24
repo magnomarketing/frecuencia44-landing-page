@@ -104,7 +104,7 @@ export default async function handler(req, res) {
     `;
 
     const { data, error } = await resend.emails.send({
-      from: `${process.env.RESEND_FROM_NAME || 'Frecuencia 44'} <${process.env.RESEND_FROM_EMAIL || 'info@argentinalibre.org'}>`,
+      from: `${process.env.RESEND_FROM_NAME || 'Frecuencia 44'} <${process.env.RESEND_FROM_EMAIL || 'info@festivalargentinalibre.org'}>`,
       to: email,
       subject: '🎯 ¡Confirmación de Registro - Masterclass Frecuencia 44!',
       html: emailHtml,

@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     }
 
     // Verificar que las variables de email estén configuradas
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'info@argentinalibre.org';
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'info@festivalargentinalibre.org';
     const fromName = process.env.RESEND_FROM_NAME || 'Frecuencia 44';
 
     console.log('API Key configurada:', process.env.RESEND_API_KEY ? 'SÍ' : 'NO');
