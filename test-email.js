@@ -11,7 +11,7 @@ const testEmail = async () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: 'test@example.com', // Cambiar por tu email para la prueba
+        email: 'ro@mango.mx', // Cambiar por tu email para la prueba
         fullName: 'Usuario de Prueba'
       })
     });

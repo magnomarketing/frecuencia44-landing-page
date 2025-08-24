@@ -41,7 +41,7 @@ export default async function handler(request) {
     // Intentar enviar un email de prueba
     const { data, error } = await resend.emails.send({
       from: `${fromName} <${fromEmail}>`,
-      to: ['test@example.com'], // Email de prueba
+      to: ['ro@mango.mx'], // Email de prueba
       subject: '🧪 Verificación de Resend - Frecuencia 44',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
