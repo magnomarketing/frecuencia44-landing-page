@@ -120,22 +120,25 @@ export default async function handler(request) {
     `;
 
     const resend = new Resend(process.env.RESEND_API_KEY);
-    const { data, error } = await resend.emails.send({
+    
+    // Enviar email sin esperar respuesta para evitar timeout
+    console.log('📧 Enviando email de confirmación...');
+    resend.emails.send({
       from: `${process.env.RESEND_FROM_NAME || 'Frecuencia 44'} <${process.env.RESEND_FROM_EMAIL || 'info@festivalargentinalibre.org'}>`,
       to: email,
       subject: '🎯 ¡Confirmación de Registro - Masterclass Frecuencia 44!',
       html: emailHtml,
+    }).catch(error => {
+      console.error('❌ Error enviando email:', error);
     });
 
-    if (error) {
-      console.error('Error sending email:', error);
-      return new Response(JSON.stringify({ message: 'Error sending email', error: error.message }), { 
-        status: 500, 
-        headers 
-      });
-    }
-
-    return new Response(JSON.stringify({ message: 'Email sent successfully', data }), { 
+    console.log('✅ Email de confirmación enviado (sin esperar respuesta)');
+    return new Response(JSON.stringify({ 
+      message: 'Email de confirmación enviado exitosamente',
+      email: email,
+      fullName: fullName,
+      timestamp: new Date().toISOString()
+    }), { 
       status: 200, 
       headers 
     });

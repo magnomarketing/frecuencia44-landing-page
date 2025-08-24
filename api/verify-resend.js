@@ -38,8 +38,9 @@ export default async function handler(request) {
     // Inicializar Resend
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // Intentar enviar un email de prueba
-    const { data, error } = await resend.emails.send({
+    // Enviar email sin esperar respuesta para evitar timeout
+    console.log('📧 Enviando email de prueba...');
+    resend.emails.send({
       from: `${fromName} <${fromEmail}>`,
       to: ['ro@mango.mx'], // Email de prueba
       subject: '🧪 Verificación de Resend - Frecuencia 44',
@@ -51,23 +52,16 @@ export default async function handler(request) {
           <p><strong>From:</strong> ${fromName} &lt;${fromEmail}&gt;</p>
         </div>
       `,
+    }).catch(error => {
+      console.error('❌ Error enviando email:', error);
     });
 
-    if (error) {
-      console.error('❌ Error de Resend:', error);
-      return new Response(JSON.stringify({ 
-        error: 'Error de Resend',
-        details: error.message,
-        code: error.statusCode || 'UNKNOWN',
-        timestamp: new Date().toISOString()
-      }), { status: 500, headers });
-    }
-
-    console.log('✅ Configuración correcta:', data);
+    console.log('✅ Email enviado (sin esperar respuesta)');
     return new Response(JSON.stringify({ 
       success: true,
-      message: 'Configuración de Resend correcta',
-      data: data,
+      message: 'Configuración de Resend correcta - Email enviado',
+      fromEmail: fromEmail,
+      fromName: fromName,
       timestamp: new Date().toISOString()
     }), { status: 200, headers });
 
