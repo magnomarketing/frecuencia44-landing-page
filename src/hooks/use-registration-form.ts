@@ -17,38 +17,79 @@ const sendEmailWithResend = async (email: string, fullName: string) => {
       body: JSON.stringify({
         from: 'Frecuencia 44 <noreply@resend.dev>',
         to: email,
-        subject: '🎯 Confirmación - Masterclass Frecuencia 44',
+        subject: 'Invitación: Masterclass Frecuencia 44 - ALQUIMIA DE PACTOS Y REALIDADES',
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, #00B9FE, #75AADB); color: white; padding: 30px; text-align: center; border-radius: 10px;">
-              <h1>🎯 Masterclass Frecuencia 44</h1>
-              <p>ALQUIMIA DE PACTOS Y REALIDADES</p>
-            </div>
-            
-            <div style="padding: 30px; background: #f9f9f9;">
-              <h2 style="color: #00B9FE;">¡Hola ${fullName}!</h2>
-              <p>Tu registro ha sido confirmado exitosamente.</p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f9fa; padding: 20px;">
+            <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
               
-              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <h3>📅 Detalles del Evento</h3>
-                <p><strong>Fecha:</strong> Domingo 24 de agosto de 2025</p>
-                <p><strong>Hora:</strong> 15:00 (hora Argentina)</p>
-                <p><strong>Plataforma:</strong> Zoom</p>
+              <!-- Header -->
+              <div style="text-align: center; margin-bottom: 30px;">
+                <h1 style="color: #1e40af; margin: 0; font-size: 24px; font-weight: bold;">🎯 Masterclass Frecuencia 44</h1>
+                <p style="color: #6b7280; margin: 10px 0 0 0; font-size: 16px;">ALQUIMIA DE PACTOS Y REALIDADES</p>
               </div>
 
-              <div style="background: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                <h3>🔗 Enlace de Zoom</h3>
+              <!-- Invitation Header -->
+              <div style="background: linear-gradient(135deg, #dbeafe, #e0e7ff); border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+                <p style="color: #1e40af; font-size: 16px; margin: 0 0 15px 0;">
+                  <strong>Equipo Samuel Valdivia</strong> le está invitando a una reunión de Zoom programada.
+                </p>
+                
+                <h2 style="color: #1e40af; font-size: 20px; font-weight: bold; margin: 0 0 15px 0;">
+                  Masterclass Frecuencia 44: ALQUIMIA DE PACTOS Y REALIDADES
+                </h2>
+                
+                <p style="color: #1e40af; font-size: 16px; margin: 0;">
+                  📅 <strong>Hora:</strong> 24 ago 2025 03:00 p. m. Buenos Aires, Georgetown
+                </p>
+              </div>
+
+              <!-- Join Meeting Button -->
+              <div style="text-align: center; margin: 25px 0;">
                 <a href="https://us02web.zoom.us/j/82510738233?pwd=alt0W3fzEAUrmRyY8bZiTtcFQU3bDV.1" 
-                   style="display: inline-block; background: #00B9FE; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px;">
-                   🎯 Unirse a la Masterclass
+                   style="display: inline-block; background: #2563eb; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
+                   🎥 Únase a la reunión de Zoom
                 </a>
-                <p><strong>ID:</strong> 825 1073 8233</p>
-                <p><strong>Código:</strong> 507559</p>
               </div>
 
-              <p style="text-align: center; font-weight: bold; color: #00B9FE;">
-                ¡Nos vemos en la transformación colectiva!
-              </p>
+              <!-- Meeting Details -->
+              <div style="background: #f3f4f6; border-radius: 8px; padding: 20px; margin: 25px 0;">
+                <h3 style="color: #374151; font-size: 18px; margin: 0 0 15px 0;">📋 Información de la Reunión</h3>
+                
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <span style="color: #6b7280; font-weight: 500;">ID de reunión:</span>
+                  <span style="color: #111827; font-family: monospace; font-weight: bold;">825 1073 8233</span>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                  <span style="color: #6b7280; font-weight: 500;">Código de acceso:</span>
+                  <span style="color: #111827; font-family: monospace; font-weight: bold;">507559</span>
+                </div>
+                
+                <div style="text-align: center; margin-top: 15px;">
+                  <a href="https://us02web.zoom.us/launch/edl?muid=a5c5a19d-8ef5-4267-9483-98ce289317ee" 
+                     style="color: #2563eb; text-decoration: none; font-size: 14px;">
+                     🔍 Ver información de la reunión con Zoom AI Companion
+                  </a>
+                </div>
+              </div>
+
+              <!-- Instructions -->
+              <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; margin: 25px 0; border-radius: 0 8px 8px 0;">
+                <p style="color: #92400e; margin: 0; font-size: 14px;">
+                  💡 <strong>Instrucciones:</strong> Haz clic en "Únase a la reunión de Zoom" cuando sea la hora del evento. 
+                  Te recomendamos conectarte 5 minutos antes para asegurar una experiencia fluida.
+                </p>
+              </div>
+
+              <!-- Footer -->
+              <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                <p style="color: #6b7280; font-size: 14px; margin: 0;">
+                  ¡Nos vemos en la transformación colectiva! 🌟
+                </p>
+                <p style="color: #9ca3af; font-size: 12px; margin: 10px 0 0 0;">
+                  Equipo Samuel Valdivia - Frecuencia 44
+                </p>
+              </div>
             </div>
           </div>
         `,
